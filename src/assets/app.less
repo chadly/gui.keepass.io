@@ -1,0 +1,32 @@
+﻿@import "vendor/bootstrap/less/bootstrap.less";
+
+body {
+	padding-top: 65px;
+	padding-bottom: 40px;
+}
+
+footer.main {
+	&:extend(.container);
+	.text-muted;
+	margin-top: 50px;
+	padding-top: @line-height-computed;
+	border-top: 1px solid @hr-border;
+}
+
+header {
+	margin: 30px 0;
+	text-align: center;
+}
+
+article {
+	.make-row();
+
+	section {
+		.make-lg-column(4);
+
+		a {
+			&:extend(.btn all);
+			&:extend(.btn-default all);
+		}
+	}
+}

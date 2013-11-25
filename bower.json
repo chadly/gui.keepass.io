@@ -1,0 +1,16 @@
+{
+  "name": "gui.keepass.io",
+  "version": "0.0.1",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.2",
+    "bootstrap-growl": "https://github.com/ifightcrime/bootstrap-growl.git#~1.1.0",
+    "font-awesome": "~4.0.3"
+  }
+}

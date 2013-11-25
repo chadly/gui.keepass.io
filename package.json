@@ -1,0 +1,22 @@
+{
+  "name": "gui.keepass.io",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+	"prestart": "grunt dev",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "~3.4.4",
+    "hogan-express": "~0.5.1",
+    "glob": "~3.2.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.7.2",
+	"grunt-contrib-copy": "~0.4.1",
+    "grunt": "~0.4.2",
+    "grunt-contrib-less": "~0.8.2",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
