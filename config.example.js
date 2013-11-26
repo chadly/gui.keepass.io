@@ -1,3 +1,4 @@
 ﻿module.exports = {
-	databasePath: "./databases"
+	databasePath: "./databases",
+	port: 1337
 };

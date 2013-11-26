@@ -1,11 +1,10 @@
 ﻿var Keepass = require("keepass.io"),
-    config = require("./../../../config"),
     path = require("path"),
     glob = require("glob");
 
 exports.init = function (app) {
 	app.get("/api/:folder", function (req, res) {
-		var folderPath = path.join(config.databasePath, req.params.folder);
+		var folderPath = path.join(app.get("databasePath"), req.params.folder);
 
 		glob(path.join(folderPath, "/*.kdbx"), function (err, files) {
 			if (err) throw err;
@@ -25,7 +24,7 @@ exports.init = function (app) {
 			password: req.query.password
 		});
 
-		db.load(path.join(config.databasePath, req.params.folder, req.params.name + ".kdbx"), function (err, data) {
+		db.load(path.join(app.get("databasePath"), req.params.folder, req.params.name + ".kdbx"), function (err, data) {
 			if (err) throw err;
 			res.send(data);
 		});

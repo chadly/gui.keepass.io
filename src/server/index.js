@@ -3,13 +3,17 @@
 	path = require("path"),
 	hogan = require("hogan-express"),
 	routes = require("./routes"),
-	scriptEnumerator = require("./lib/script-enumerator");
+	scriptEnumerator = require("./lib/script-enumerator"),
+	config = require("./../../config");
 
 var assetsDir = path.join(__dirname + "/../client");
 
 var app = express();
 
 app.configure(function () {
+	app.set("port", config.port || 1337);
+	app.set("databasePath", config.databasePath || "./databases");
+
 	app.locals({
 		title: "Keepass Web GUI"
 	});
@@ -39,8 +43,8 @@ app.configure(function () {
 
 routes.init(app);
 
-http.createServer(app).listen(1337, function () {
-	console.log("Express server listening on port 1337");
+http.createServer(app).listen(app.get("port"), function () {
+	console.log("Express server listening on port " + app.get("port"));
 });
 
 process.on("uncaughtException", function (err) {
