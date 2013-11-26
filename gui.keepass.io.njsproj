@@ -32,7 +32,6 @@
     <Compile Include="src\lib\script-enumerator.js" />
     <Content Include="src\assets\css\bootswatch.less" />
     <Content Include="src\assets\css\variables.less" />
-    <Content Include="src\assets\home\home.less" />
     <Content Include="src\assets\index.html" />
     <Content Include="src\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="src\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -81,7 +80,6 @@
     <Content Include="src\assets\errors\404.html" />
     <Content Include="src\assets\errors\homer.png" />
     <Compile Include="src\assets\errors\handler.js" />
-    <Content Include="src\assets\home\index.html" />
     <Compile Include="src\assets\lib\notify.js" />
     <Compile Include="src\assets\lib\page-titles.js" />
     <Compile Include="src\assets\vendor\jquery.bootstrap-growl.js" />
@@ -91,7 +89,6 @@
     <Folder Include="src" />
     <Folder Include="src\assets" />
     <Folder Include="src\assets\errors" />
-    <Folder Include="src\assets\home" />
     <Folder Include="src\assets\lib" />
     <Folder Include="src\assets\css\" />
     <Folder Include="src\assets\vendor" />
