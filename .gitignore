@@ -1,5 +1,6 @@
 *.suo
 
+/src/config.js
 /bower_components
 /node_modules
 /src/assets/vendor
