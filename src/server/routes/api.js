@@ -4,30 +4,30 @@
     glob = require("glob");
 
 exports.init = function (app) {
-    app.get("/api/:folder", function (req, res) {
-        var folderPath = path.join(config.databasePath, req.params.folder);
+	app.get("/api/:folder", function (req, res) {
+		var folderPath = path.join(config.databasePath, req.params.folder);
 
-        glob(path.join(folderPath, "/*.kdbx"), function (err, files) {
+		glob(path.join(folderPath, "/*.kdbx"), function (err, files) {
 			if (err) throw err;
 
 			res.send({
-                databases: files.map(function(file) {
-                    return path.relative(folderPath, file).replace(/.kdbx/g, "");
-                })
-            });
+				databases: files.map(function (file) {
+					return path.relative(folderPath, file).replace(/.kdbx/g, "");
+				})
+			});
 		});
 	});
 
 	app.get("/api/:folder/:name", function (req, res) {
-        var db = new Keepass();
+		var db = new Keepass();
 
-        db.setCredentials({
-            password: req.query.password
-        });
+		db.setCredentials({
+			password: req.query.password
+		});
 
-        db.load(path.join(config.databasePath, req.params.folder, req.params.name + ".kdbx"), function(err, data) {
-            if(err) throw err;
-            res.send(data);
-        });
+		db.load(path.join(config.databasePath, req.params.folder, req.params.name + ".kdbx"), function (err, data) {
+			if (err) throw err;
+			res.send(data);
+		});
 	});
 };

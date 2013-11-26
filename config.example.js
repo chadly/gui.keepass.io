@@ -1,3 +1,3 @@
 ﻿module.exports = {
-    databasePath: "./databases"
+	databasePath: "./databases"
 };
