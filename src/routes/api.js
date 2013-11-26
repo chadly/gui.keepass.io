@@ -1,8 +1,25 @@
 ﻿var Keepass = require("keepass.io"),
     config = require("./../config"),
-    path = require("path");
+    path = require("path"),
+    glob = require("glob");
 
 exports.init = function (app) {
+    app.get("/api/:folder", function (req, res) {
+        var folderPath = path.join(config.databasePath, req.params.folder);
+
+        glob(path.join(folderPath, "/*.kdbx"), {
+			cwd: folderPath
+		}, function (err, files) {
+			if (err) throw err;
+
+			res.send({
+                databases: files.map(function(file) {
+                    return path.relative(folderPath, file).replace(/.kdbx/g, "");
+                })
+            });
+		});
+	});
+
 	app.get("/api/:folder/:name", function (req, res) {
         var db = new Keepass();
 
