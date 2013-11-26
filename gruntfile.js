@@ -2,20 +2,20 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		less: {
 			dev: {
-				src: ["src/assets/css/app.less"],
-				dest: "src/assets/css/app.less.css"
+				src: ["src/client/css/app.less"],
+				dest: "src/client/css/app.less.css"
 			},
 			prod: {
 				options: {
 					yuicompress: true
 				},
-				src: ["src/assets/css/app.less"],
-				dest: "src/assets/css/app.less.css"
+				src: ["src/client/css/app.less"],
+				dest: "src/client/css/app.less.css"
 			}
 		},
 		jshint: {
-			server: ["src/**/*.js", "!src/assets/**/*.js"],
-			client: ["src/assets/**/*.js", "!src/assets/vendor/**/*.js", "!src/assets/**/*.min.js"]
+			server: ["src/server/**/*.js"],
+			client: ["src/client/**/*.js", "!src/client/vendor/**/*.js", "!src/client/**/*.min.js"]
 		},
 		copy: {
 			bootstrap: {
@@ -23,17 +23,17 @@ module.exports = function (grunt) {
 					expand: true,
 					cwd: "bower_components/bootstrap/less/",
 					src: ["*.less"],
-					dest: "src/assets/vendor/bootstrap/less/"
+					dest: "src/client/vendor/bootstrap/less/"
 				}, {
 					expand: true,
 					cwd: "bower_components/bootstrap/dist/fonts/",
 					src: ["*.*"],
-					dest: "src/assets/vendor/bootstrap/fonts/"
+					dest: "src/client/vendor/bootstrap/fonts/"
 				}]
 			},
 			"bootstrap-growl": {
 				src: "bower_components/bootstrap-growl/jquery.bootstrap-growl.js",
-				dest: "src/assets/vendor/jquery.bootstrap-growl.js"
+				dest: "src/client/vendor/jquery.bootstrap-growl.js"
 			}
 		},
 		watch: {

@@ -5,7 +5,7 @@
 	routes = require("./routes"),
 	scriptEnumerator = require("./lib/script-enumerator");
 
-var assetsDir = path.join(__dirname + "/assets");
+var assetsDir = path.join(__dirname + "/../client");
 
 var app = express();
 

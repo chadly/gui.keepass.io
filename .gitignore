@@ -1,7 +1,6 @@
 *.suo
-
-/src/config.js
+*.less.css
+/config.js
 /bower_components
 /node_modules
-/src/assets/vendor
-*.less.css
+/src/client/vendor

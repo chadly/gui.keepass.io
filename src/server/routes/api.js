@@ -1,5 +1,5 @@
 ﻿var Keepass = require("keepass.io"),
-    config = require("./../config"),
+    config = require("./../../../config"),
     path = require("path"),
     glob = require("glob");
 
