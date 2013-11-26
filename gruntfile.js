@@ -2,15 +2,15 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		less: {
 			dev: {
-				src: ["src/assets/app.less"],
-				dest: "src/assets/app.less.css"
+				src: ["src/assets/css/app.less"],
+				dest: "src/assets/css/app.less.css"
 			},
 			prod: {
 				options: {
 					yuicompress: true
 				},
-				src: ["src/assets/app.less"],
-				dest: "src/assets/app.less.css"
+				src: ["src/assets/css/app.less"],
+				dest: "src/assets/css/app.less.css"
 			}
 		},
 		jshint: {

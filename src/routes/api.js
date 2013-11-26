@@ -7,9 +7,7 @@ exports.init = function (app) {
     app.get("/api/:folder", function (req, res) {
         var folderPath = path.join(config.databasePath, req.params.folder);
 
-        glob(path.join(folderPath, "/*.kdbx"), {
-			cwd: folderPath
-		}, function (err, files) {
+        glob(path.join(folderPath, "/*.kdbx"), function (err, files) {
 			if (err) throw err;
 
 			res.send({
