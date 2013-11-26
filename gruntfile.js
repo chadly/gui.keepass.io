@@ -1,3 +1,5 @@
+var path = require("path");
+
 module.exports = function (grunt) {
 	grunt.initConfig({
 		less: {
@@ -18,6 +20,19 @@ module.exports = function (grunt) {
 			client: ["src/client/**/*.js", "!src/client/vendor/**/*.js", "!src/client/**/*.min.js"]
 		},
 		copy: {
+			config: {
+				//create the config.js file in the root if it is not already there
+				src: ["config.example.js"],
+				dest: "config.js",
+				filter: function (filepath) {
+					var dest = path.join(
+						grunt.config("copy.config.dest"),
+						// Remove the parent directory from filepath
+						filepath.split(path.sep).slice(2).join(path.sep)
+					);
+					return !(grunt.file.exists(dest));
+				}
+			},
 			bootstrap: {
 				files: [{
 					expand: true,
