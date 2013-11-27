@@ -3,7 +3,8 @@
 
 	$routeProvider
 		.when("/", {
-			templateUrl: "/assets/index.html",
+			controller: "ChooserCtrl",
+			templateUrl: "/assets/chooser/index.html",
 			title: "Home"
 		})
 		.otherwise({

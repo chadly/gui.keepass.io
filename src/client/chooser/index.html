@@ -1,0 +1,10 @@
+﻿<header>
+	<h2>Choose your database</h2>
+</header>
+<article>
+	<section ng-repeat="db in databases">
+		<h3>{{db.name}}</h3>
+		<p>Last modified: {{db.modifiedOn | date:'medium'}}</p>
+		<p>Size: {{db.size | bytes}}</p>
+	</section>
+</article>
