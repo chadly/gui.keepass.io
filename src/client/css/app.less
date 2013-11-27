@@ -23,12 +23,18 @@ header {
 article {
 	.make-row();
 
-	section {
+	section.db {
 		.make-lg-column(4);
 
-		a {
-			&:extend(.btn all);
-			&:extend(.btn-default all);
+
+
+		.db-attr-label {
+			display:inline-block;
+			width: 5em;
+		}
+
+		.db-attr-value {
+			font-weight:bold;
 		}
 	}
 }

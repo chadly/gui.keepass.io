@@ -2,9 +2,16 @@
 	<h2>Choose your database</h2>
 </header>
 <article>
-	<section ng-repeat="db in databases">
-		<h3>{{db.name}}</h3>
-		<p>Last modified: {{db.modifiedOn | date:'medium'}}</p>
-		<p>Size: {{db.size | bytes}}</p>
-	</section>
+	<a ng-repeat="db in databases" ng-href="/{{db.name}}">
+		<section class="db">
+			<h3>{{db.name}}</h3>
+			<p>
+				<span class="db-attr-label">Size:</span>
+				<span class="db-attr-value">{{db.size | bytes}}</span>
+				<br />
+				<span class="db-attr-label">Modified:</span>
+				<span class="db-attr-value">{{db.modifiedOn | date:'medium'}}</span>
+			</p>
+		</section>
+	</a>
 </article>
