@@ -43,10 +43,10 @@ exports.init = function (app) {
 		db.load(path.join(dbPath, req.params.name), function (err, data) {
 			if (err && err.name === "CredentialsError") {
 				res.status(401).send(err.message);
-			} else if (err) {
-				throw err;
+				return;
 			}
 
+			if (err) throw err;
 			res.send(data);
 		});
 	});

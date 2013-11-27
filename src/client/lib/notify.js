@@ -7,8 +7,8 @@
 		notify(msg, "info");
 	};
 
-	this.error = function (msg) {
-		notify(msg, "error");
+	this.danger = function (msg) {
+		notify(msg, "danger");
 	};
 
 	this.success = function (msg) {
