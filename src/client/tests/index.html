@@ -23,9 +23,9 @@
 	<script src="chooser.js"></script>
 
 	<script>
-		mocha.checkLeaks();
-		mocha.globals(['jQuery']);
-		mocha.run();
+		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			mocha.run();
+		}
 	</script>
 </body>
 </html>

@@ -60,6 +60,9 @@ module.exports = function (grunt) {
 		mocha: {
 			client: {
 				src: ["src/client/tests/index.html"]
+			},
+			options: {
+				run: true
 			}
 		},
 		watch: {
