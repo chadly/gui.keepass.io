@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+	<meta charset="utf-8">
+	<title>keepass.io Client Unit Tests</title>
+	<link rel="stylesheet" href="../../../node_modules/mocha/mocha.css" />
+</head>
+<body>
+	<div id="mocha"></div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+
+	<script src="../../../node_modules/chai/chai.js"></script>
+	<script src="../../../node_modules/mocha/mocha.js"></script>
+	<script>mocha.setup('bdd')</script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-mocks.js"></script>
+
+	<script src="../app.js"></script>
+	<script src="../chooser/index.js"></script>
+
+	<script src="chooser.js"></script>
+
+	<script>
+		mocha.checkLeaks();
+		mocha.globals(['jQuery']);
+		mocha.run();
+	</script>
+</body>
+</html>

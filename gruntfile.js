@@ -57,6 +57,11 @@ module.exports = function (grunt) {
 				dest: "src/client/vendor/bootswatch/slate/"
 			}
 		},
+		mocha: {
+			client: {
+				src: ["src/client/tests/index.html"]
+			}
+		},
 		watch: {
 			less: {
 				files: ["**/*.less"],
@@ -69,6 +74,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-mocha");
 
 	grunt.registerTask("dev", ["copy", "less:dev", "jshint"]);
 	grunt.registerTask("prod", ["copy", "less:prod", "jshint"]);
