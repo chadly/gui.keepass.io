@@ -7,6 +7,11 @@
 			templateUrl: "/assets/chooser/index.html",
 			title: "Home"
 		})
+		.when("/:name", {
+			controller: "ViewerCtrl",
+			templateUrl: "/assets/viewer/index.html",
+			title: "Database Viewer"
+		})
 		.otherwise({
 			templateUrl: "/assets/errors/404.html",
 			title: "Page Not Found"
