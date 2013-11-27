@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "~3.0.2",
     "bootstrap-growl": "https://github.com/ifightcrime/bootstrap-growl.git#~1.1.0",
+	"bootswatch": "https://github.com/thomaspark/bootswatch.git#~3.0.2",
     "font-awesome": "~4.0.3"
   }
 }

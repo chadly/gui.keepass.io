@@ -49,6 +49,12 @@ module.exports = function (grunt) {
 			"bootstrap-growl": {
 				src: "bower_components/bootstrap-growl/jquery.bootstrap-growl.js",
 				dest: "src/client/vendor/jquery.bootstrap-growl.js"
+			},
+			"bootswatch": {
+				expand: true,
+				cwd: "bower_components/bootswatch/slate/",
+				src: ["*.less"],
+				dest: "src/client/vendor/bootswatch/slate/"
 			}
 		},
 		watch: {
