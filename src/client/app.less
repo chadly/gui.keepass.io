@@ -15,26 +15,6 @@ footer.main {
 	border-top: 1px solid @hr-border;
 }
 
-header {
-	margin: 30px 0;
-	text-align: center;
-}
-
-article {
-	.make-row();
-
-	section.db {
-		.make-lg-column(4);
-
-
-
-		.db-attr-label {
-			display:inline-block;
-			width: 5em;
-		}
-
-		.db-attr-value {
-			font-weight:bold;
-		}
-	}
-}
+//page-specific CSS
+@import "chooser/index.less";
+@import "viewer/unlock.less";
