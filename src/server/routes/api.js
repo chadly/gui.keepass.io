@@ -33,15 +33,20 @@ exports.init = function (app) {
 		});
 	});
 
-	app.get("/api/:name", function (req, res) {
+	app.post("/api/:name", function (req, res) {
 		var db = new Keepass();
 
 		db.setCredentials({
-			password: req.query.password
+			password: req.body.password
 		});
 
 		db.load(path.join(dbPath, req.params.name), function (err, data) {
-			if (err) throw err;
+			if (err && err.name === "CredentialsError") {
+				res.status(401).send(err.message);
+			} else if (err) {
+				throw err;
+			}
+
 			res.send(data);
 		});
 	});
