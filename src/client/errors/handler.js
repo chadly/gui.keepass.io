@@ -1,19 +1,17 @@
 ﻿angular.module("keepass.io").config(function ($httpProvider) {
-	$httpProvider.responseInterceptors.push(["$q", "notify", function ($q, notify) {
-		return function (promise) {
-			return promise.then(success, error);
-		};
+	$httpProvider.interceptors.push(["$q", "notify", function ($q, notify) {
+		return {
+			responseError: function (response) {
+				if (response.status === 500) {
+					notify.error("There was an error trying to complete the current request. Please refresh the page and try again.");
+				}
 
-		function success(response) {
-			return response;
-		}
+				if (response.status === 401) {
+					notify.error("The specified master password is not valid. Please try again.");
+				}
 
-		function error(response) {
-			if (response.status === 500) {
-				notify.error("There was an error trying to complete the current request. Please refresh the page and try again.");
+				return $q.reject(response);
 			}
-
-			return $q.reject(response);
-		}
+		};
 	}]);
 });
