@@ -12,7 +12,7 @@ exports.init = function (app) {
 			if (err) throw err;
 
 			flow.map(files, function (file, done) {
-				var name = path.relative(dbPath, file).replace(/.kdbx/g, "");
+				var name = path.relative(dbPath, file);
 
 				fs.stat(file, function (err, stats) {
 					if (err) throw err;
@@ -40,7 +40,7 @@ exports.init = function (app) {
 			password: req.query.password
 		});
 
-		db.load(path.join(dbPath, req.params.name + ".kdbx"), function (err, data) {
+		db.load(path.join(dbPath, req.params.name), function (err, data) {
 			if (err) throw err;
 			res.send(data);
 		});
