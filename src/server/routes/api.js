@@ -1,18 +1,34 @@
 ﻿var Keepass = require("keepass.io"),
-    path = require("path"),
-    glob = require("glob");
+	path = require("path"),
+	glob = require("glob"),
+	fs = require("fs"),
+	flow = require("nimble");
 
 exports.init = function (app) {
 	var dbPath = app.get("databasePath");
 
-	app.get("/api/", function (req, res) {
+	app.get("/api", function (req, res) {
 		glob(path.join(dbPath, "/*.kdbx"), function (err, files) {
 			if (err) throw err;
 
-			res.send({
-				databases: files.map(function (file) {
-					return path.relative(dbPath, file).replace(/.kdbx/g, "");
-				})
+			flow.map(files, function (file, done) {
+				var name = path.relative(dbPath, file).replace(/.kdbx/g, "");
+
+				fs.stat(file, function (err, stats) {
+					if (err) throw err;
+
+					done(null, {
+						name: name,
+						size: stats.size,
+						modifiedOn: stats.mtime
+					});
+				});
+			}, function (err, result) {
+				if (err) throw err;
+
+				res.send({
+					databases: result
+				});
 			});
 		});
 	});

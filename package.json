@@ -10,7 +10,8 @@
     "express": "~3.4.4",
     "hogan-express": "~0.5.1",
     "glob": "~3.2.7",
-    "keepass.io": "~0.2.6"
+    "keepass.io": "~0.2.6",
+    "nimble": "0.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
