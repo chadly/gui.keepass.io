@@ -33,10 +33,15 @@ app.configure(function () {
 	app.use(express.cookieParser());
 	app.use(express.session({ secret: "keyboard cat" }));
 
+	app.use("/assets", express.static(assetsDir));
+
 	app.use(scriptEnumerator(assetsDir));
 	app.use(app.router);
 
-	app.use("/assets", express.static(assetsDir));
+	app.use(function logErrors(err, req, res, next) {
+		console.error(err ? err.stack || err : err);
+		next(err);
+	});
 
 	app.use(express.errorHandler());
 });
@@ -45,8 +50,4 @@ routes.init(app);
 
 http.createServer(app).listen(app.get("port"), function () {
 	console.log("Now listening on port " + app.get("port"));
-});
-
-process.on("uncaughtException", function (err) {
-	console.error(err ? err.stack || err : err);
 });

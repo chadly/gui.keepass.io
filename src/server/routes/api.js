@@ -7,15 +7,15 @@
 exports.init = function (app) {
 	var dbPath = app.get("databasePath");
 
-	app.get("/api", function (req, res) {
+	app.get("/api", function (req, res, next) {
 		glob(path.join(dbPath, "/*.kdbx"), function (err, files) {
-			if (err) throw err;
+			if (err) return next(err);
 
 			flow.map(files, function (file, done) {
 				var name = path.relative(dbPath, file);
 
 				fs.stat(file, function (err, stats) {
-					if (err) throw err;
+					if (err) return next(err);
 
 					done(null, {
 						name: name,
@@ -24,7 +24,7 @@ exports.init = function (app) {
 					});
 				});
 			}, function (err, result) {
-				if (err) throw err;
+				if (err) return next(err);
 
 				res.send({
 					databases: result
@@ -33,7 +33,7 @@ exports.init = function (app) {
 		});
 	});
 
-	app.post("/api/:name", function (req, res) {
+	app.post("/api/:name", function (req, res, next) {
 		var db = new Keepass();
 
 		db.setCredentials({
@@ -41,12 +41,15 @@ exports.init = function (app) {
 		});
 
 		db.load(path.join(dbPath, req.params.name), function (err, data) {
-			if (err && err.name === "CredentialsError") {
-				res.status(401).send(err.message);
-				return;
+			if (err) {
+				if (err.name === "CredentialsError") {
+					res.status(401).send(err.message);
+					return;
+				}
+
+				return next(err);
 			}
 
-			if (err) throw err;
 			res.send(data);
 		});
 	});
