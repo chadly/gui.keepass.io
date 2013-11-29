@@ -66,7 +66,12 @@ describe("Viewer Controller", function () {
 			beforeEach(function () {
 				http.expectPOST("/api/test-name", {
 					password: scope.masterPassword
-				}).respond(200, JSON.stringify({ name: "Test Database" }));
+				}).respond(200, JSON.stringify({
+					meta: {
+						dbName: "Test Database",
+						dbDescription: "This is a test database"
+					}
+				}));
 
 				http.flush();
 			});
@@ -85,7 +90,15 @@ describe("Viewer Controller", function () {
 
 			it("should populate database data from server", function () {
 				expect(scope.database).not.to.be.undefined;
-				expect(scope.database.name).to.equal("Test Database");
+				expect(scope.database.meta.dbName).to.equal("Test Database");
+			});
+
+			it("should populate title from database data", function () {
+				expect(scope.title).to.equal("Test Database");
+			});
+
+			it("should populate description from database data", function () {
+				expect(scope.description).to.equal("This is a test database");
 			});
 		});
 	});

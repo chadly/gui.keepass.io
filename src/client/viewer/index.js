@@ -10,7 +10,11 @@
 		}).success(function (data) {
 			//don't keep this thing hanging around in memory
 			this.masterPassword = "";
+
 			$scope.database = data;
+
+			$rootScope.title = data.meta.dbName;
+			$scope.description = data.meta.dbDescription;
 		}.bind(this)).finally(function () {
 			$scope.isUnlocking = false;
 		});

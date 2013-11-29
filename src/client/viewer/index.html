@@ -1,5 +1,6 @@
 ﻿<header>
 	<h2>{{title}}</h2>
+	<p ng-if="description">{{description}}</p>
 </header>
 
 <ng-include ng-if="!database" src="'/assets/viewer/unlock.html'"></ng-include>

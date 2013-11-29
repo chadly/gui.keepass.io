@@ -82,6 +82,7 @@
     <Content Include="src\client\vendor\bootstrap\less\utilities.less" />
     <Content Include="src\client\vendor\bootstrap\less\variables.less" />
     <Content Include="src\client\vendor\bootstrap\less\wells.less" />
+    <Content Include="src\client\viewer\database.html" />
     <Content Include="src\client\viewer\index.html" />
     <Content Include="src\client\viewer\unlock.html" />
     <Content Include="src\client\viewer\unlock.less" />
