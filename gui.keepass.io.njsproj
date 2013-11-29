@@ -27,6 +27,7 @@
     <Compile Include="src\client\lib\byte-filter.js" />
     <Compile Include="src\client\chooser\tests.js" />
     <Compile Include="src\client\viewer\index.js" />
+    <Compile Include="src\client\viewer\tests.js" />
     <Compile Include="src\server\app.js" />
     <Compile Include="src\server\routes\api.js" />
     <Compile Include="src\server\routes\index.js" />

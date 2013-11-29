@@ -9,7 +9,7 @@ describe("Chooser Controller", function () {
 
 		beforeEach(angular.mock.module("keepass.io"));
 
-		beforeEach(angular.mock.inject(function ($httpBackend, $controller) {
+		beforeEach(angular.mock.inject(function ($httpBackend, $controller, $rootScope) {
 			$httpBackend.when("GET", "/api").respond({
 				databases: [{
 					name: "test1.kdbx",
@@ -22,7 +22,7 @@ describe("Chooser Controller", function () {
 				}]
 			});
 
-			scope = {};
+			scope = $rootScope.$new();
 			ctrl = $controller("ChooserCtrl", { $scope: scope });
 			$httpBackend.flush();
 		}));

@@ -1,0 +1,87 @@
+﻿//https://github.com/chaijs/chai/issues/41
+/* jshint expr:true */
+
+describe("Viewer Controller", function () {
+	var expect = chai.expect, ctrl, scope;
+
+	beforeEach(angular.mock.module("keepass.io"));
+
+	beforeEach(angular.mock.inject(function ($rootScope, $controller) {
+		scope = $rootScope.$new();
+
+		ctrl = $controller("ViewerCtrl", {
+			$scope: scope,
+			$routeParams: {
+				name: "test-name"
+			}
+		});
+	}));
+
+	describe("when creating new instance of controller", function () {
+		it("should create controller", function () {
+			expect(ctrl).not.to.be.undefined;
+		});
+
+		it("should set scope title", function () {
+			expect(scope.title).to.equal("test-name");
+		});
+	});
+
+	describe("when unlocking database", function () {
+		var http;
+
+		beforeEach(angular.mock.inject(function ($httpBackend) {
+			http = $httpBackend;
+			scope.masterPassword = "my voice is my passport";
+			scope.unlockDatabase();
+		}));
+
+		it("should indicate activity", function () {
+			expect(scope.isUnlocking).to.be.true;
+		});
+
+		describe("with an invalid password response", function () {
+			beforeEach(function () {
+				http.expectPOST("/api/test-name", {
+					password: scope.masterPassword
+				}).respond(401);
+
+				http.flush();
+			});
+
+			it("should have posted master password to server", function () {
+				http.verifyNoOutstandingExpectation();
+			});
+
+			it("should not indicate activity", function () {
+				expect(scope.isUnlocking).not.to.be.ok;
+			});
+
+			it("should clear master password", function () {
+				expect(scope.masterPassword).not.to.be.ok;
+			});
+		});
+
+		describe("with a successful server response", function () {
+			beforeEach(function () {
+				http.expectPOST("/api/test-name", {
+					password: scope.masterPassword
+				}).respond(200);
+
+				http.flush();
+			});
+
+			it("should have posted master password to server", function () {
+				http.verifyNoOutstandingExpectation();
+			});
+
+			it("should not indicate activity", function () {
+				expect(scope.isUnlocking).not.to.be.ok;
+			});
+
+			it("should clear master password", function () {
+				expect(scope.masterPassword).not.to.be.ok;
+			});
+		});
+	});
+});
