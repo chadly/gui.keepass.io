@@ -13,6 +13,7 @@
 
 			$scope.database = data;
 
+			$rootScope.cssScope = "kp-viewer";
 			$rootScope.title = data.name;
 			$scope.description = data.description;
 		}.bind(this)).finally(function () {
