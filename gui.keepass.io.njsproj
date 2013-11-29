@@ -82,6 +82,8 @@
     <Content Include="src\client\vendor\bootstrap\less\utilities.less" />
     <Content Include="src\client\vendor\bootstrap\less\variables.less" />
     <Content Include="src\client\vendor\bootstrap\less\wells.less" />
+    <Content Include="src\client\vendor\bootswatch\slate\bootswatch.less" />
+    <Content Include="src\client\vendor\bootswatch\slate\variables.less" />
     <Content Include="src\client\viewer\database.html" />
     <Content Include="src\client\viewer\index.html" />
     <Content Include="src\client\viewer\unlock.html" />
@@ -105,6 +107,8 @@
     <Folder Include="src\client\vendor\bootstrap\" />
     <Folder Include="src\client\vendor\bootstrap\fonts\" />
     <Folder Include="src\client\vendor\bootstrap\less\" />
+    <Folder Include="src\client\vendor\bootswatch\" />
+    <Folder Include="src\client\vendor\bootswatch\slate\" />
     <Folder Include="src\client\viewer\" />
     <Folder Include="src\server\lib\" />
     <Folder Include="src\server\" />
