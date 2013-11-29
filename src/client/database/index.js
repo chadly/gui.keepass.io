@@ -20,4 +20,18 @@
 			$scope.isUnlocking = false;
 		});
 	};
+
+	$scope.select = function (group) {
+		deselectAllGroups($scope.database.groups);
+		group.isSelected = true;
+	};
+
+	function deselectAllGroups(groups) {
+		if (groups) {
+			groups.forEach(function (group) {
+				group.isSelected = false;
+				deselectAllGroups(group.groups);
+			});
+		}
+	}
 });

@@ -100,4 +100,53 @@ describe("Database Controller", function () {
 			});
 		});
 	});
+
+	describe("when selecting a database group", function () {
+		beforeEach(function () {
+			scope.database = {
+				name: "Test Database",
+				description: "This is a test database",
+				groups: [{
+					name: "Group 1",
+					entries: [],
+					groups: [{
+						name: "Subgroup 1",
+						entries: []
+					}, {
+						name: "Subgroup 2",
+						entries: []
+					}]
+				}, {
+					name: "Group 2",
+					entries: []
+				}]
+			};
+
+			scope.select(scope.database.groups[0]);
+		});
+
+		it("should mark group as selected", function () {
+			expect(scope.database.groups[0].isSelected).to.be.true;
+		});
+
+		describe("with other groups already selected", function () {
+			beforeEach(function () {
+				scope.database.groups[0].groups[0].isSelected = true;
+				scope.database.groups[0].groups[1].isSelected = true;
+				scope.database.groups[1].isSelected = true;
+
+				scope.select(scope.database.groups[0]);
+			});
+
+			it("should mark group as selected", function () {
+				expect(scope.database.groups[0].isSelected).to.be.true;
+			});
+
+			it("should deselect existing selected groups", function () {
+				expect(scope.database.groups[0].groups[0].isSelected).to.be.false;
+				expect(scope.database.groups[0].groups[1].isSelected).to.be.false;
+				expect(scope.database.groups[1].isSelected).to.be.false;
+			});
+		});
+	});
 });
