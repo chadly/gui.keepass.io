@@ -13,8 +13,8 @@
 
 			$scope.database = data;
 
-			$rootScope.title = data.meta.dbName;
-			$scope.description = data.meta.dbDescription;
+			$rootScope.title = data.name;
+			$scope.description = data.description;
 		}.bind(this)).finally(function () {
 			$scope.isUnlocking = false;
 		});

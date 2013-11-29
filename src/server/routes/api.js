@@ -50,7 +50,44 @@ exports.init = function (app) {
 				return next(err);
 			}
 
-			res.send(data);
+			res.send(transform(data));
 		});
 	});
+
+	function transform(database) {
+		//only return what the UI is going to use
+		return populate(database, {
+			name: database.meta.dbName,
+			description: database.meta.dbDescription
+		});
+	}
+
+	function populate(src, dest) {
+		var groups = [];
+
+		for (var groupId in src.groups) {
+			var srcGroup = src.groups[groupId];
+
+			var destGroup = {
+				name: srcGroup.name,
+				notes: srcGroup.notes
+			};
+
+			destGroup.entries = [];
+			for (var entryId in srcGroup.entries) {
+				var srcEntry = srcGroup.entries[entryId];
+				destGroup.entries.push(srcEntry);
+			}
+
+			populate(srcGroup, destGroup);
+
+			groups.push(destGroup);
+		}
+
+		if (groups.length > 0) {
+			dest.groups = groups;
+		}
+
+		return dest;
+	}
 };
