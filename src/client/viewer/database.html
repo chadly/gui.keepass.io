@@ -1,3 +1,15 @@
 ﻿<textarea>
 	{{database | json}}
 </textarea>
+
+<ul class="kp-group kp-group-root">
+	<li ng-repeat="group in database.groups" ng-include="'kp-group.html'"></li>
+</ul>
+
+<script type="text/ng-template" id="kp-group.html">
+	<span class="kp-group-name">{{group.name}}</span>
+	<span class="kp-group-count">({{group.entries.length | number}})</span>
+	<ul class="kp-group" ng-if="group.groups">
+		<li ng-repeat="group in group.groups" ng-include="'kp-group.html'"></li>
+	</ul>
+</script>
