@@ -57,8 +57,8 @@ describe("Viewer Controller", function () {
 				expect(scope.isUnlocking).not.to.be.ok;
 			});
 
-			it("should clear master password", function () {
-				expect(scope.masterPassword).not.to.be.ok;
+			it("should not clear master password", function () {
+				expect(scope.masterPassword).to.equal("my voice is my passport");
 			});
 		});
 

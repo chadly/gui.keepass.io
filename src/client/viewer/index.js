@@ -8,10 +8,12 @@
 		$http.post("/api/" + $routeParams.name, {
 			password: this.masterPassword
 		}).success(function (data) {
-			console.log(data);
-		}).finally(function () {
+			//don't keep this thing hanging around in memory
 			this.masterPassword = "";
+
+			console.log(data);
+		}.bind(this)).finally(function () {
 			$scope.isUnlocking = false;
-		}.bind(this));
+		});
 	};
 });
