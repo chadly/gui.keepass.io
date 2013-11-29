@@ -1,7 +1,7 @@
 ﻿//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
-describe("Viewer Controller", function () {
+describe("Database Controller", function () {
 	var expect = chai.expect, ctrl, scope;
 
 	beforeEach(angular.mock.module("keepass.io"));
@@ -9,7 +9,7 @@ describe("Viewer Controller", function () {
 	beforeEach(angular.mock.inject(function ($rootScope, $controller) {
 		scope = $rootScope.$new();
 
-		ctrl = $controller("ViewerCtrl", {
+		ctrl = $controller("DatabaseCtrl", {
 			$scope: scope,
 			$routeParams: {
 				name: "test-name"

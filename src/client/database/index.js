@@ -1,4 +1,4 @@
-﻿angular.module("keepass.io").controller("ViewerCtrl", function ($scope, $rootScope, $routeParams, $http) {
+﻿angular.module("keepass.io").controller("DatabaseCtrl", function ($scope, $rootScope, $routeParams, $http) {
 	$rootScope.title = $routeParams.name;
 	$rootScope.cssScope = "kp-unlock";
 

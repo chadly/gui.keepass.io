@@ -8,8 +8,8 @@
 			title: "Choose your database"
 		})
 		.when("/:name", {
-			controller: "ViewerCtrl",
-			templateUrl: "/assets/viewer/index.html",
+			controller: "DatabaseCtrl",
+			templateUrl: "/assets/database/index.html",
 			title: "Database Viewer"
 		})
 		.otherwise({
