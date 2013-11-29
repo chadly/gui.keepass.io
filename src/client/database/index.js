@@ -21,17 +21,47 @@
 		});
 	};
 
-	$scope.select = function (group) {
-		deselectAllGroups($scope.database.groups);
-		group.isSelected = true;
+	$scope.select = function (item) {
+		deselectAll($scope.database.groups);
+		item.isSelected = true;
+
+		if (!item.entries) {
+			//this is an entry, also select the parent group
+			var group = findGroupFor($scope.database.groups, item);
+			group.isSelected = true;
+		}
 	};
 
-	function deselectAllGroups(groups) {
+	function deselectAll(groups) {
 		if (groups) {
 			groups.forEach(function (group) {
 				group.isSelected = false;
-				deselectAllGroups(group.groups);
+
+				group.entries.forEach(function (entry) {
+					entry.isSelected = false;
+				});
+
+				deselectAll(group.groups);
 			});
+		}
+	}
+
+	function findGroupFor(groups, entry) {
+		if (groups) {
+			for (var index in groups) {
+				var group = groups[index];
+
+				for (var entryIndex in group.entries) {
+					if (groups[index].entries[entryIndex] === entry) {
+						return group;
+					}
+				}
+
+				var foundGroup = findGroupFor(group.groups, entry);
+				if (foundGroup) {
+					return foundGroup;
+				}
+			}
 		}
 	}
 });
