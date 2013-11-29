@@ -12,14 +12,16 @@ module.exports = function (folder) {
 			res.locals.scripts = "";
 
 			files.forEach(function (file) {
-				file = path.join("/assets/", path.relative(folder, file)).replace(/\\/g, "/");
+				if (file.indexOf("test") < 0) {
+					file = path.join("/assets/", path.relative(folder, file)).replace(/\\/g, "/");
 
-				var scriptTag = '<script src="' + file + '"></script>';
+					var scriptTag = '<script src="' + file + '"></script>';
 
-				if (file.indexOf("app.js") >= 0) {
-					res.locals.scripts = scriptTag + "\n" + res.locals.scripts;
-				} else {
-					res.locals.scripts += "\n" + scriptTag;
+					if (file.indexOf("app.js") >= 0) {
+						res.locals.scripts = scriptTag + "\n" + res.locals.scripts;
+					} else {
+						res.locals.scripts += "\n" + scriptTag;
+					}
 				}
 			});
 
