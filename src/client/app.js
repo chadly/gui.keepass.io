@@ -3,9 +3,9 @@
 
 	$routeProvider
 		.when("/", {
-			controller: "ChooserCtrl",
-			templateUrl: "/assets/chooser/index.html",
-			title: "Home"
+			controller: "HomeCtrl",
+			templateUrl: "/assets/home/index.html",
+			title: "Choose your database"
 		})
 		.when("/:name", {
 			controller: "ViewerCtrl",

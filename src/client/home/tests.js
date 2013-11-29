@@ -1,7 +1,7 @@
 ﻿//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
-describe("Chooser Controller", function () {
+describe("Home Controller", function () {
 	var expect = chai.expect;
 
 	describe("when creating new instance of controller", function () {
@@ -23,7 +23,7 @@ describe("Chooser Controller", function () {
 			});
 
 			scope = $rootScope.$new();
-			ctrl = $controller("ChooserCtrl", { $scope: scope });
+			ctrl = $controller("HomeCtrl", { $scope: scope });
 			$httpBackend.flush();
 		}));
 

@@ -23,9 +23,9 @@
     <Compile Include="config.example.js" />
     <Compile Include="config.js" />
     <Compile Include="gruntfile.js" />
-    <Compile Include="src\client\chooser\index.js" />
+    <Compile Include="src\client\home\index.js" />
     <Compile Include="src\client\lib\byte-filter.js" />
-    <Compile Include="src\client\chooser\tests.js" />
+    <Compile Include="src\client\home\tests.js" />
     <Compile Include="src\client\viewer\index.js" />
     <Compile Include="src\client\viewer\tests.js" />
     <Compile Include="src\server\app.js" />
@@ -34,8 +34,8 @@
     <Compile Include="src\server\routes\portal.js" />
     <Compile Include="src\server\index.js" />
     <Content Include="src\client\app.less" />
-    <Content Include="src\client\chooser\index.html" />
-    <Content Include="src\client\chooser\index.less" />
+    <Content Include="src\client\home\index.html" />
+    <Content Include="src\client\home\index.less" />
     <Compile Include="src\client\app.js" />
     <Compile Include="src\server\lib\script-enumerator.js" />
     <Content Include="src\client\test.html" />
@@ -100,7 +100,7 @@
   <ItemGroup>
     <Folder Include="src" />
     <Folder Include="src\client\" />
-    <Folder Include="src\client\chooser\" />
+    <Folder Include="src\client\home\" />
     <Folder Include="src\client\errors\" />
     <Folder Include="src\client\lib\" />
     <Folder Include="src\client\vendor\" />
