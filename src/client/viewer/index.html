@@ -2,4 +2,5 @@
 	<h2>{{title}}</h2>
 </header>
 
-<ng-include src="'/assets/viewer/unlock.html'"></ng-include>
+<ng-include ng-if="!database" src="'/assets/viewer/unlock.html'"></ng-include>
+<ng-include ng-if="database" src="'/assets/viewer/database.html'"></ng-include>

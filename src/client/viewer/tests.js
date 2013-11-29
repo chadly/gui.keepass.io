@@ -66,7 +66,7 @@ describe("Viewer Controller", function () {
 			beforeEach(function () {
 				http.expectPOST("/api/test-name", {
 					password: scope.masterPassword
-				}).respond(200);
+				}).respond(200, JSON.stringify({ name: "Test Database" }));
 
 				http.flush();
 			});
@@ -81,6 +81,11 @@ describe("Viewer Controller", function () {
 
 			it("should clear master password", function () {
 				expect(scope.masterPassword).not.to.be.ok;
+			});
+
+			it("should populate database data from server", function () {
+				expect(scope.database).not.to.be.undefined;
+				expect(scope.database.name).to.equal("Test Database");
 			});
 		});
 	});

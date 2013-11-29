@@ -10,8 +10,7 @@
 		}).success(function (data) {
 			//don't keep this thing hanging around in memory
 			this.masterPassword = "";
-
-			console.log(data);
+			$scope.database = data;
 		}.bind(this)).finally(function () {
 			$scope.isUnlocking = false;
 		});
