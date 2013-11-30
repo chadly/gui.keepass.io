@@ -32,6 +32,28 @@
 		}
 	};
 
+	$scope.selectedEntry = function () {
+		return findSelectedEntry($scope.database.groups);
+	};
+
+	function findSelectedEntry(groups) {
+		for (var index in groups) {
+			var group = groups[index];
+
+			for (var entryIndex in group.entries) {
+				var entry = groups[index].entries[entryIndex];
+				if (entry.isSelected) {
+					return entry;
+				}
+			}
+
+			var foundEntry = findSelectedEntry(group.groups);
+			if (foundEntry) {
+				return foundEntry;
+			}
+		}
+	}
+
 	function deselectAll(groups) {
 		if (groups) {
 			groups.forEach(function (group) {

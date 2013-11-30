@@ -129,6 +129,10 @@ describe("Database Controller", function () {
 			expect(scope.database.groups[0].isSelected).to.be.true;
 		});
 
+		it("should not mark entry as selected", function () {
+			expect(scope.selectedEntry()).to.be.undefined;
+		});
+
 		describe("with other groups already selected", function () {
 			beforeEach(function () {
 				scope.database.groups[0].groups[0].isSelected = true;
@@ -140,6 +144,10 @@ describe("Database Controller", function () {
 
 			it("should mark group as selected", function () {
 				expect(scope.database.groups[0].isSelected).to.be.true;
+			});
+
+			it("should not mark entry as selected", function () {
+				expect(scope.selectedEntry()).to.be.undefined;
 			});
 
 			it("should deselect existing selected groups", function () {
@@ -180,6 +188,10 @@ describe("Database Controller", function () {
 
 		it("should mark entry as selected", function () {
 			expect(scope.database.groups[0].entries[0].isSelected).to.be.true;
+		});
+
+		it("should return selected entry", function () {
+			expect(scope.selectedEntry()).to.equal(scope.database.groups[0].entries[0]);
 		});
 	});
 });
