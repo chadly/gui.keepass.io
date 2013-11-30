@@ -11,9 +11,13 @@ describe("Database Entry Controller", function () {
 
 		scope.selectedEntry = function () {
 			return {
-				title: "Test Entry",
+				title: "Simpsons Test",
 				username: "homer.simpson",
-				password: "doh!"
+				password: "doh!",
+				fields: {
+					"City": "Springfield",
+					"State": "??"
+				}
 			};
 		};
 
@@ -26,9 +30,20 @@ describe("Database Entry Controller", function () {
 		});
 
 		it("should copy entry data to scope", function () {
-			expect(scope.title).to.equal("Test Entry");
+			expect(scope.title).to.equal("Simpsons Test");
 			expect(scope.username).to.equal("homer.simpson");
 			expect(scope.password).to.equal("doh!");
+		});
+
+		it("should expand entry fields to array on scope", function () {
+			expect(scope.fields).not.to.be.undefined;
+			expect(scope.fields.length).to.equal(2);
+
+			expect(scope.fields[0].key).to.equal("City");
+			expect(scope.fields[0].value).to.equal("Springfield");
+
+			expect(scope.fields[1].key).to.equal("State");
+			expect(scope.fields[1].value).to.equal("??");
 		});
 	});
 });

@@ -2,9 +2,15 @@
 <time datetime="{{lastModificationTime}}">Modified on {{lastModificationTime | date:'medium'}}</time>
 
 <dl>
-	<dt>Username</dt>
-	<dd>{{username}}</dd>
+	<dt ng-if="username">Username</dt>
+	<dd ng-if="username">{{username}}</dd>
 
-	<dt>Password</dt>
-	<dd>{{password}}</dd>
+	<dt ng-if="password">Password</dt>
+	<dd ng-if="password">{{password}}</dd>
+
+	<dt ng-if="url">URL</dt>
+	<dd ng-if="url"><a ng-href="{{url}}">{{url}}</a></dd>
+
+	<dt ng-repeat-start="field in fields">{{field.key}}</dt>
+	<dd ng-repeat-end>{{field.value}}</dd>
 </dl>
