@@ -23,6 +23,8 @@
     <Compile Include="config.example.js" />
     <Compile Include="config.js" />
     <Compile Include="gruntfile.js" />
+    <Compile Include="src\client\database\entry.js" />
+    <Compile Include="src\client\database\entry.tests.js" />
     <Compile Include="src\client\database\viewer.tests.js" />
     <Compile Include="src\client\database\viewer.js" />
     <Compile Include="src\client\home\index.js" />

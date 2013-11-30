@@ -1,2 +1,2 @@
 ﻿<div ng-include="'/assets/database/nav.html'" class="kp-nav"></div>
-<div ng-if="selectedEntry()" ng-include="'/assets/database/entry.html'" class="kp-entry"></div>
+<div ng-if="selectedEntry()" ng-include="'/assets/database/entry.html'" ng-controller="DatabaseEntryCtrl" class="kp-entry"></div>
