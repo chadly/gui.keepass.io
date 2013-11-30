@@ -11,7 +11,21 @@ describe("Database Viewer Controller", function () {
 
 		scope.database = {
 			name: "Test Database",
-			description: "This is a test database"
+			description: "This is a test database",
+			groups: [{
+				name: "Group 1",
+				entries: [{ title: "Entry 1" }, { title: "Entry 2" }],
+				groups: [{
+					name: "Subgroup 1",
+					entries: [{ title: "Subentry 1" }, { title: "Subentry 2" }]
+				}, {
+					name: "Subgroup 2",
+					entries: []
+				}]
+			}, {
+				name: "Group 2",
+				entries: []
+			}]
 		};
 
 		ctrl = $controller("DatabaseViewerCtrl", { $scope: scope });
@@ -29,29 +43,29 @@ describe("Database Viewer Controller", function () {
 		it("should populate description from database data", function () {
 			expect(scope.description).to.equal("This is a test database");
 		});
+
+		it("should populate groups from database data", function () {
+			expect(scope.groups).not.to.be.undefined;
+			expect(scope.groups.length).to.equal(2);
+		});
+
+		it("should populate parents for groups", function () {
+			var parentGroup = scope.groups[0];
+			expect(parentGroup.parent).to.be.undefined;
+
+			expect(parentGroup.groups[0].parent).to.equal(parentGroup);
+			expect(parentGroup.groups[1].parent).to.equal(parentGroup);
+		});
+
+		it("should populate parents for entries", function () {
+			var parentGroup = scope.groups[0];
+			expect(parentGroup.entries[0].parent).to.equal(parentGroup);
+			expect(parentGroup.entries[1].parent).to.equal(parentGroup);
+		});
 	});
 
 	describe("when selecting a database group", function () {
 		beforeEach(function () {
-			scope.database = {
-				name: "Test Database",
-				description: "This is a test database",
-				groups: [{
-					name: "Group 1",
-					entries: [],
-					groups: [{
-						name: "Subgroup 1",
-						entries: []
-					}, {
-						name: "Subgroup 2",
-						entries: []
-					}]
-				}, {
-					name: "Group 2",
-					entries: []
-				}]
-			};
-
 			scope.select(scope.database.groups[0]);
 		});
 
@@ -90,25 +104,6 @@ describe("Database Viewer Controller", function () {
 
 	describe("when selecting a database entry", function () {
 		beforeEach(function () {
-			scope.database = {
-				name: "Test Database",
-				description: "This is a test database",
-				groups: [{
-					name: "Group 1",
-					entries: [{ title: "Entry 1" }, { title: "Entry 2" }],
-					groups: [{
-						name: "Subgroup 1",
-						entries: [{ title: "Subentry 1" }, { title: "Subentry 2" }]
-					}, {
-						name: "Subgroup 2",
-						entries: []
-					}]
-				}, {
-					name: "Group 2",
-					entries: []
-				}]
-			};
-
 			scope.select(scope.database.groups[0].entries[0]);
 		});
 
