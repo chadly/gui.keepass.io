@@ -7,8 +7,12 @@ body {
 	padding-bottom: 40px;
 }
 
+main {
+	&:extend(.container all);
+}
+
 footer.main {
-	&:extend(.container);
+	&:extend(.container all);
 	.text-muted;
 	margin-top: 50px;
 	padding-top: @line-height-computed;

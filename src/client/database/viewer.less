@@ -3,17 +3,29 @@
 		margin: 30px 0;
 	}
 
-	ul.kp-group {
-		margin: 0;
-		padding: 0;
-	}
+	.content {
+		.make-row();
 
-	ul.kp-group li {
-		list-style: none;
-		margin-left: 1em;
-	}
+		.kp-nav {
+			.make-lg-column(4);
+		}
 
-	.kp-group-name.selected, .kp-entry-name.selected {
-		font-weight: bold;
+		.kp-entry {
+			.make-lg-column(8);
+		}
+
+		ul.kp-group {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul.kp-group li {
+			list-style: none;
+			margin-left: 1em;
+		}
+
+		.kp-group-name.selected, .kp-entry-name.selected {
+			font-weight: bold;
+		}
 	}
 }

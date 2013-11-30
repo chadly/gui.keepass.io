@@ -1,0 +1,10 @@
+﻿<h3>{{selectedEntry().title}}</h3>
+<time datetime="{{selectedEntry().lastModificationTime}}">Modified on {{selectedEntry().lastModificationTime | date:'medium'}}</time>
+
+<dl>
+	<dt>Username</dt>
+	<dd>{{selectedEntry().username}}</dd>
+
+	<dt>Password</dt>
+	<dd>{{selectedEntry().password}}</dd>
+</dl>

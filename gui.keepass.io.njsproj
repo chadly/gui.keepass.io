@@ -34,6 +34,8 @@
     <Compile Include="src\server\routes\portal.js" />
     <Compile Include="src\server\index.js" />
     <Content Include="src\client\app.less" />
+    <Content Include="src\client\database\entry.html" />
+    <Content Include="src\client\database\nav.html" />
     <Content Include="src\client\database\viewer.less" />
     <Content Include="src\client\home\index.html" />
     <Content Include="src\client\home\index.less" />

@@ -1,20 +1,2 @@
-﻿<ul class="kp-group kp-group-root">
-	<li ng-repeat="group in database.groups" ng-include="'kp-menu-group.html'"></li>
-</ul>
-
-<script type="text/ng-template" id="kp-menu-group.html">
-	<a class="kp-group-name" href="javascript:void();" ng-click="select(group)" ng-class="{ selected: group.isSelected }">
-		<i class="fa" ng-class="{ 'fa-folder-open': group.isSelected, 'fa-folder': !group.isSelected }"></i>
-		{{group.name}}
-	</a>
-	<span class="kp-group-count">({{group.entries.length | number}})</span>
-	<ul class="kp-group" ng-if="group.groups || group.isSelected">
-		<li ng-repeat="group in group.groups" ng-include="'kp-menu-group.html'"></li>
-		<li ng-if="group.isSelected" ng-repeat="entry in group.entries">
-			<a class="kp-entry-name" href="javascript:void();" ng-click="select(entry)" ng-class="{ selected: entry.isSelected }">
-				<i class="fa fa-key"></i>
-				{{entry.title}}
-			</a>
-		</li>
-	</ul>
-</script>
+﻿<div ng-include="'/assets/database/nav.html'" class="kp-nav"></div>
+<div ng-if="selectedEntry()" ng-include="'/assets/database/entry.html'" class="kp-entry"></div>
