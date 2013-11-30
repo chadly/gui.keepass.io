@@ -76,7 +76,14 @@ exports.init = function (app) {
 			destGroup.entries = [];
 			for (var entryId in srcGroup.entries) {
 				var srcEntry = srcGroup.entries[entryId];
-				destGroup.entries.push(srcEntry);
+				destGroup.entries.push({
+					title: srcEntry.title,
+					url: srcEntry.url,
+					username: srcEntry.username,
+					password: srcEntry.password,
+					lastModificationTime: srcEntry.lastModificationTime,
+					fields: srcEntry.fields
+				});
 			}
 
 			populate(srcGroup, destGroup);
