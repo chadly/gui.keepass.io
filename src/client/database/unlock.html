@@ -1,9 +1,18 @@
-﻿<form ng-submit="unlockDatabase()">
-	<p>
-		<input type="password" id="masterPassword" ng-model="masterPassword" placeholder="Enter your master password" autofocus required />
-	</p>
-	<p class="kp-actions">
-		<button type="submit">Unlock Database</button>
-		<a href="/">Cancel</a>
-	</p>
-</form>
+﻿<header>
+	<h2>{{title}}</h2>
+	<p ng-if="description">{{description}}</p>
+</header>
+
+<div class="content">
+	<form ng-if="!database" ng-submit="unlockDatabase()">
+		<p>
+			<input type="password" id="masterPassword" ng-model="masterPassword" placeholder="Enter your master password" autofocus required />
+		</p>
+		<p class="kp-actions">
+			<button type="submit">Unlock Database</button>
+			<a href="/">Cancel</a>
+		</p>
+	</form>
+
+	<ng-include ng-if="database" ng-controller="DatabaseViewerCtrl" src="'/assets/database/viewer.html'"></ng-include>
+</div>

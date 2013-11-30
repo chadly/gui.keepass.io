@@ -23,11 +23,13 @@
     <Compile Include="config.example.js" />
     <Compile Include="config.js" />
     <Compile Include="gruntfile.js" />
+    <Compile Include="src\client\database\viewer.tests.js" />
+    <Compile Include="src\client\database\viewer.js" />
     <Compile Include="src\client\home\index.js" />
     <Compile Include="src\client\lib\byte-filter.js" />
     <Compile Include="src\client\home\tests.js" />
-    <Compile Include="src\client\database\index.js" />
-    <Compile Include="src\client\database\tests.js" />
+    <Compile Include="src\client\database\unlock.js" />
+    <Compile Include="src\client\database\unlock.tests.js" />
     <Compile Include="src\server\app.js" />
     <Compile Include="src\server\routes\api.js" />
     <Compile Include="src\server\routes\index.js" />
@@ -88,7 +90,6 @@
     <Content Include="src\client\vendor\bootswatch\slate\bootswatch.less" />
     <Content Include="src\client\vendor\bootswatch\slate\variables.less" />
     <Content Include="src\client\database\viewer.html" />
-    <Content Include="src\client\database\index.html" />
     <Content Include="src\client\database\unlock.html" />
     <Content Include="src\client\database\unlock.less" />
     <Content Include="src\server\views\index.html" />

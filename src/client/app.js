@@ -8,9 +8,9 @@
 			title: "Choose your database"
 		})
 		.when("/:name", {
-			controller: "DatabaseCtrl",
-			templateUrl: "/assets/database/index.html",
-			title: "Database Viewer"
+			controller: "DatabaseUnlockCtrl",
+			templateUrl: "/assets/database/unlock.html",
+			title: "Database Unlocker"
 		})
 		.otherwise({
 			templateUrl: "/assets/errors/404.html",
