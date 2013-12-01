@@ -7,8 +7,8 @@
 		<i class="fa" ng-class="{ 'fa-folder-open': isSelected(group), 'fa-folder': !isSelected(group) }"></i>
 		{{group.name}}
 	</a>
-	<span class="kp-group-count">({{group.entries.length | number}})</span>
-	<ul class="kp-group" ng-if="group.groups || isSelected(group)">
+	<span class="kp-group-count">({{group.entries.length + (group.groups ? group.groups.length : 0) | number}})</span>
+	<ul class="kp-group" ng-if="isSelected(group)">
 		<li ng-repeat="group in group.groups" ng-include="'kp-menu-group.html'"></li>
 		<li ng-if="isSelected(group)" ng-repeat="entry in group.entries">
 			<a class="kp-entry-name" href="#" ng-click="select(entry)" ng-class="{ selected: isSelected(entry) }">
