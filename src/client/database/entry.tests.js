@@ -9,16 +9,14 @@ describe("Database Entry Controller", function () {
 	beforeEach(angular.mock.inject(function ($rootScope, $controller) {
 		scope = $rootScope.$new();
 
-		scope.selectedEntry = function () {
-			return {
-				title: "Simpsons Test",
-				username: "homer.simpson",
-				password: "doh!",
-				fields: {
-					"City": "Springfield",
-					"State": "??"
-				}
-			};
+		scope.selectedItem = {
+			title: "Simpsons Test",
+			username: "homer.simpson",
+			password: "doh!",
+			fields: {
+				"City": "Springfield",
+				"State": "??"
+			}
 		};
 
 		ctrl = $controller("DatabaseEntryCtrl", { $scope: scope });

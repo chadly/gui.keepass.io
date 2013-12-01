@@ -3,15 +3,15 @@
 </ul>
 
 <script type="text/ng-template" id="kp-menu-group.html">
-	<a class="kp-group-name" href="javascript:void();" ng-click="select(group)" ng-class="{ selected: group.isSelected }">
-		<i class="fa" ng-class="{ 'fa-folder-open': group.isSelected, 'fa-folder': !group.isSelected }"></i>
+	<a class="kp-group-name" href="javascript:void();" ng-click="select(group)" ng-class="{ selected: isSelected(group) }">
+		<i class="fa" ng-class="{ 'fa-folder-open': isSelected(group), 'fa-folder': !isSelected(group) }"></i>
 		{{group.name}}
 	</a>
 	<span class="kp-group-count">({{group.entries.length | number}})</span>
-	<ul class="kp-group" ng-if="group.groups || group.isSelected">
+	<ul class="kp-group" ng-if="group.groups || isSelected(group)">
 		<li ng-repeat="group in group.groups" ng-include="'kp-menu-group.html'"></li>
-		<li ng-if="group.isSelected" ng-repeat="entry in group.entries">
-			<a class="kp-entry-name" href="javascript:void();" ng-click="select(entry)" ng-class="{ selected: entry.isSelected }">
+		<li ng-if="isSelected(group)" ng-repeat="entry in group.entries">
+			<a class="kp-entry-name" href="javascript:void();" ng-click="select(entry)" ng-class="{ selected: isSelected(entry) }">
 				<i class="fa fa-key"></i>
 				{{entry.title}}
 			</a>

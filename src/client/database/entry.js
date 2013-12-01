@@ -1,5 +1,5 @@
 ﻿angular.module("keepass.io").controller("DatabaseEntryCtrl", function ($scope) {
-	var entry = $scope.selectedEntry();
+	var entry = $scope.selectedItem;
 
 	for (var prop in entry) {
 		if (prop === "fields") {

@@ -14,6 +14,7 @@
 
 				group.entries.forEach(function (entry) {
 					entry.parent = group;
+					entry.isEntry = true;
 				});
 
 				processGroups(group.groups, group);
@@ -22,70 +23,24 @@
 	}
 
 	$scope.select = function (item) {
-		deselectAll($scope.database.groups);
-		item.isSelected = true;
-
-		if (!item.entries) {
-			//this is an entry, also select the parent group
-			var group = findGroupFor($scope.database.groups, item);
-			group.isSelected = true;
-		}
+		$scope.selectedItem = item;
 	};
 
-	//TODO: select sets a selected observable
+	$scope.isSelected = function (item) {
+		if ($scope.selectedItem === item) {
+			return true;
+		}
 
-	$scope.selectedEntry = function () {
-		return findSelectedEntry($scope.database.groups);
+		if ($scope.selectedItem) {
+			var currentItem = $scope.selectedItem.parent;
+			while (currentItem) {
+				if (currentItem === item) {
+					return true;
+				}
+				currentItem = currentItem.parent;
+			}
+		}
+
+		return false;
 	};
-
-	function findSelectedEntry(groups) {
-		for (var index in groups) {
-			var group = groups[index];
-
-			for (var entryIndex in group.entries) {
-				var entry = groups[index].entries[entryIndex];
-				if (entry.isSelected) {
-					return entry;
-				}
-			}
-
-			var foundEntry = findSelectedEntry(group.groups);
-			if (foundEntry) {
-				return foundEntry;
-			}
-		}
-	}
-
-	function deselectAll(groups) {
-		if (groups) {
-			groups.forEach(function (group) {
-				group.isSelected = false;
-
-				group.entries.forEach(function (entry) {
-					entry.isSelected = false;
-				});
-
-				deselectAll(group.groups);
-			});
-		}
-	}
-
-	function findGroupFor(groups, entry) {
-		if (groups) {
-			for (var index in groups) {
-				var group = groups[index];
-
-				for (var entryIndex in group.entries) {
-					if (groups[index].entries[entryIndex] === entry) {
-						return group;
-					}
-				}
-
-				var foundGroup = findGroupFor(group.groups, entry);
-				if (foundGroup) {
-					return foundGroup;
-				}
-			}
-		}
-	}
 });
