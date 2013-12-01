@@ -9,17 +9,19 @@ describe("Database Entry Controller", function () {
 	beforeEach(angular.mock.inject(function ($rootScope, $controller) {
 		scope = $rootScope.$new();
 
-		scope.selectedItem = {
-			title: "Simpsons Test",
-			username: "homer.simpson",
-			password: "doh!",
-			fields: {
-				"City": "Springfield",
-				"State": "??"
-			}
-		};
-
 		ctrl = $controller("DatabaseEntryCtrl", { $scope: scope });
+
+		scope.$apply(function () {
+			scope.selectedItem = {
+				title: "Simpsons Test",
+				username: "homer.simpson",
+				password: "doh!",
+				fields: {
+					"City": "Springfield",
+					"State": "??"
+				}
+			};
+		});
 	}));
 
 	describe("when creating new instance of controller", function () {
