@@ -13,4 +13,7 @@
 
 	<dt ng-repeat-start="field in fields">{{field.key}}</dt>
 	<dd ng-repeat-end>{{field.value}}</dd>
+
+	<dt ng-if="notes">Notes</dt>
+	<dd ng-if="notes"><pre>{{notes}}</pre></dd>
 </dl>

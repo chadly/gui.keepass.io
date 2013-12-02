@@ -82,6 +82,7 @@ exports.init = function (app) {
 					username: srcEntry.username,
 					password: srcEntry.password,
 					lastModificationTime: srcEntry.lastModificationTime,
+					notes: srcEntry.notes,
 					fields: srcEntry.fields
 				});
 			}
