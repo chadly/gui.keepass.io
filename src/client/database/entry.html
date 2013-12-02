@@ -1,4 +1,6 @@
-﻿<h3>{{title}}</h3>
+﻿<h3 ng-if="!url">{{title}}</h3>
+<h3 ng-if="url"><a ng-href="{{url}}" target="_blank">{{title}} <i class="fa fa-external-link-square"></i></a></h3>
+
 <time datetime="{{lastModificationTime}}">Modified on {{lastModificationTime | date:'medium'}}</time>
 
 <dl>
@@ -7,9 +9,6 @@
 
 	<dt ng-if="password">Password</dt>
 	<dd ng-if="password">{{password}}</dd>
-
-	<dt ng-if="url">URL</dt>
-	<dd ng-if="url"><a ng-href="{{url}}" target="_blank">{{url}}</a></dd>
 
 	<dt ng-repeat-start="field in fields">{{field.key}}</dt>
 	<dd ng-repeat-end>{{field.value}}</dd>
