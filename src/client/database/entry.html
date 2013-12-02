@@ -1,18 +1,23 @@
-﻿<h3 ng-if="!url">{{title}}</h3>
-<h3 ng-if="url"><a ng-href="{{url}}" target="_blank">{{title}} <i class="fa fa-external-link-square"></i></a></h3>
+﻿<article class="kp-entry" ng-class="{'link': url, 'nolink': !url }">
+	<section class="title">
+		<h3 ng-if="!url">{{title}}</h3>
+		<h3 ng-if="url"><a ng-href="{{url}}" target="_blank">{{title}} <i class="fa fa-external-link-square"></i></a></h3>
+		<time datetime="{{lastModificationTime}}">Modified on {{lastModificationTime | date:'medium'}}</time>
+	</section>
 
-<time datetime="{{lastModificationTime}}">Modified on {{lastModificationTime | date:'medium'}}</time>
+	<section class="body">
+		<dl class="fields">
+			<dt ng-if="username">Username</dt>
+			<dd ng-if="username">{{username}}</dd>
 
-<dl>
-	<dt ng-if="username">Username</dt>
-	<dd ng-if="username">{{username}}</dd>
+			<dt ng-if="password">Password</dt>
+			<dd ng-if="password">{{password}}</dd>
 
-	<dt ng-if="password">Password</dt>
-	<dd ng-if="password">{{password}}</dd>
+			<dt ng-repeat-start="field in fields" ng-if="field.value">{{field.key}}</dt>
+			<dd ng-repeat-end ng-if="field.value">{{field.value}}</dd>
 
-	<dt ng-repeat-start="field in fields">{{field.key}}</dt>
-	<dd ng-repeat-end>{{field.value}}</dd>
-
-	<dt ng-if="notes">Notes</dt>
-	<dd ng-if="notes"><pre>{{notes}}</pre></dd>
-</dl>
+			<dt ng-if="notes">Notes</dt>
+			<dd ng-if="notes"><pre>{{notes}}</pre></dd>
+		</dl>
+	</section>
+</article>
