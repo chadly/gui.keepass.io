@@ -14,7 +14,7 @@ describe("Database Viewer Controller", function () {
 			description: "This is a test database",
 			groups: [{
 				name: "Group 1",
-				entries: [{ title: "Entry 1" }, { title: "Entry 2" }],
+				entries: [{ title: "Entry 1", url: "google.com" }, { title: "Entry 2", url: "https://www.bing.com" }],
 				groups: [{
 					name: "Subgroup 1",
 					entries: [{ title: "Subentry 1" }, { title: "Subentry 2" }]
@@ -67,6 +67,16 @@ describe("Database Viewer Controller", function () {
 			var parentGroup = scope.groups[0];
 			expect(parentGroup.entries[0].isEntry).to.be.true;
 			expect(parentGroup.entries[1].isEntry).to.be.true;
+		});
+
+		it("should fix invalid URLs on entries", function () {
+			var entry = scope.groups[0].entries[0];
+			expect(entry.url).to.equal("http://google.com");
+		});
+
+		it("should not molest existing valid URLs on entries", function () {
+			var entry = scope.groups[0].entries[1];
+			expect(entry.url).to.equal("https://www.bing.com");
 		});
 	});
 

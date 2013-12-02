@@ -9,7 +9,7 @@
 	<dd ng-if="password">{{password}}</dd>
 
 	<dt ng-if="url">URL</dt>
-	<dd ng-if="url"><a ng-href="{{url}}">{{url}}</a></dd>
+	<dd ng-if="url"><a ng-href="{{url}}" target="_blank">{{url}}</a></dd>
 
 	<dt ng-repeat-start="field in fields">{{field.key}}</dt>
 	<dd ng-repeat-end>{{field.value}}</dd>

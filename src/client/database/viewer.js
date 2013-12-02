@@ -15,6 +15,10 @@
 				group.entries.forEach(function (entry) {
 					entry.parent = group;
 					entry.isEntry = true;
+
+					if (entry.url && entry.url.indexOf("http") !== 0) {
+						entry.url = "http://" + entry.url;
+					}
 				});
 
 				processGroups(group.groups, group);
