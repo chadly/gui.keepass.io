@@ -27,6 +27,14 @@
 		.kp-entry-container {
 			.make-lg-column(9);
 
+			.kp-entry-list {
+				&:extend(.list-group all);
+
+				li {
+					&:extend(.list-group-item all);
+				}
+			}
+
 			.kp-entry {
 				&:extend(.panel all);
 
