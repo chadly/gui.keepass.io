@@ -27,6 +27,10 @@
 		.kp-entry-container {
 			.make-lg-column(9);
 
+			ul.kp-entry-nav {
+				&:extend(.kp-viewer .content .kp-nav ul.kp-group all);
+			}
+
 			.kp-entry {
 				&:extend(.panel all);
 
