@@ -39,7 +39,7 @@
     <Compile Include="src\server\index.js" />
     <Content Include="src\client\app.less" />
     <Content Include="src\client\database\entry.html" />
-    <Content Include="src\client\database\entry.less" />
+    <Content Include="src\client\database\items.html" />
     <Content Include="src\client\database\nav.html" />
     <Content Include="src\client\database\viewer.less" />
     <Content Include="src\client\home\index.html" />
