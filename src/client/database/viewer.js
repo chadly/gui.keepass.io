@@ -5,6 +5,19 @@
 	$rootScope.description = $scope.database.description;
 
 	$scope.groups = $scope.database.groups;
+
+	$scope.$watch("selectedItem", function () {
+		$scope.breadcrumbs = [];
+
+		var item = $scope.selectedItem;
+		while (item) {
+			$scope.breadcrumbs.push(item);
+			item = item.parent;
+		}
+
+		$scope.breadcrumbs.reverse();
+	});
+
 	processGroups($scope.groups);
 
 	function processGroups(groups, parent) {

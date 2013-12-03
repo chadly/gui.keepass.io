@@ -82,7 +82,9 @@ describe("Database Viewer Controller", function () {
 
 	describe("when selecting a database group", function () {
 		beforeEach(function () {
-			scope.select(scope.groups[0]);
+			scope.$apply(function () {
+				scope.select(scope.groups[0]);
+			});
 		});
 
 		it("should mark group as selected", function () {
@@ -95,11 +97,19 @@ describe("Database Viewer Controller", function () {
 			expect(scope.isSelected(scope.groups[0].groups[1])).to.be.false;
 			expect(scope.isSelected(scope.groups[1])).to.be.false;
 		});
+
+		it("should populate breadcrumbs", function () {
+			expect(scope.breadcrumbs).not.to.be.undefined;
+			expect(scope.breadcrumbs.length).to.equal(1);
+			expect(scope.breadcrumbs[0]).to.equal(scope.groups[0]);
+		});
 	});
 
 	describe("when selecting a database subgroup", function () {
 		beforeEach(function () {
-			scope.select(scope.groups[0].groups[1]);
+			scope.$apply(function () {
+				scope.select(scope.groups[0].groups[1]);
+			});
 		});
 
 		it("should mark group as selected", function () {
@@ -110,11 +120,21 @@ describe("Database Viewer Controller", function () {
 		it("should mark parent group as selected", function () {
 			expect(scope.isSelected(scope.groups[0])).to.be.true;
 		});
+
+		it("should populate breadcrumbs", function () {
+			expect(scope.breadcrumbs).not.to.be.undefined;
+			expect(scope.breadcrumbs.length).to.equal(2);
+
+			expect(scope.breadcrumbs[0]).to.equal(scope.groups[0]);
+			expect(scope.breadcrumbs[1]).to.equal(scope.groups[0].groups[1]);
+		});
 	});
 
 	describe("when selecting a database entry", function () {
 		beforeEach(function () {
-			scope.select(scope.groups[0].groups[0].entries[0]);
+			scope.$apply(function () {
+				scope.select(scope.groups[0].groups[0].entries[0]);
+			});
 		});
 
 		it("should mark entry as selected", function () {
@@ -128,6 +148,15 @@ describe("Database Viewer Controller", function () {
 
 		it("should mark grandparent group as selected", function () {
 			expect(scope.isSelected(scope.groups[0])).to.be.true;
+		});
+
+		it("should populate breadcrumbs", function () {
+			expect(scope.breadcrumbs).not.to.be.undefined;
+			expect(scope.breadcrumbs.length).to.equal(3);
+
+			expect(scope.breadcrumbs[0]).to.equal(scope.groups[0]);
+			expect(scope.breadcrumbs[1]).to.equal(scope.groups[0].groups[0]);
+			expect(scope.breadcrumbs[2]).to.equal(scope.groups[0].groups[0].entries[0]);
 		});
 	});
 
