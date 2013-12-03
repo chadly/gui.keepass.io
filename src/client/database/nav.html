@@ -1,14 +1,14 @@
-﻿<ul class="kp-group">
+﻿<ul class="kp-tree">
 	<li ng-repeat="group in groups" ng-include="'kp-menu-group.html'"></li>
 </ul>
 
 <script type="text/ng-template" id="kp-menu-group.html">
-	<a class="kp-group-name" href="#" ng-click="select(group)" ng-class="{ selected: isSelected(group) }">
+	<a class="kp-tree-item" href="#" ng-click="select(group)" ng-class="{ selected: isSelected(group) }">
 		<i class="fa" ng-class="{ 'fa-folder-open': isSelected(group), 'fa-folder': !isSelected(group) }"></i>
 		{{group.name}}
 	</a>
 	<span class="kp-group-count">({{group.entries.length | number}})</span>
-	<ul class="kp-group" ng-if="group.groups">
+	<ul class="kp-tree" ng-if="group.groups">
 		<li ng-repeat="group in group.groups" ng-include="'kp-menu-group.html'"></li>
 	</ul>
 </script>
