@@ -2,15 +2,24 @@
 /* jshint expr:true */
 
 describe("Database Unlock Controller", function () {
-	var expect = chai.expect, ctrl, scope;
+	var expect = chai.expect, ctrl, scope, location, databaseMock;
 
 	beforeEach(angular.mock.module("keepass.io"));
 
-	beforeEach(angular.mock.inject(function ($rootScope, $controller) {
+	beforeEach(angular.mock.inject(function ($rootScope, $controller, $location, $q) {
 		scope = $rootScope.$new();
+		location = $location;
+
+		databaseMock = {
+			unlock: function () {
+				this.deferred = $q.defer();
+				return this.deferred.promise;
+			}
+		};
 
 		ctrl = $controller("DatabaseUnlockCtrl", {
 			$scope: scope,
+			database: databaseMock,
 			$routeParams: {
 				name: "test-name"
 			}
@@ -28,10 +37,7 @@ describe("Database Unlock Controller", function () {
 	});
 
 	describe("when unlocking database", function () {
-		var http;
-
-		beforeEach(angular.mock.inject(function ($httpBackend) {
-			http = $httpBackend;
+		beforeEach(angular.mock.inject(function () {
 			scope.masterPassword = "my voice is my passport";
 			scope.unlockDatabase();
 		}));
@@ -42,15 +48,9 @@ describe("Database Unlock Controller", function () {
 
 		describe("with an invalid-password server response", function () {
 			beforeEach(function () {
-				http.expectPOST("/api/test-name", {
-					password: scope.masterPassword
-				}).respond(401);
-
-				http.flush();
-			});
-
-			it("should have posted master password to server", function () {
-				http.verifyNoOutstandingExpectation();
+				scope.$apply(function () {
+					databaseMock.deferred.reject();
+				});
 			});
 
 			it("should not indicate activity", function () {
@@ -64,31 +64,48 @@ describe("Database Unlock Controller", function () {
 
 		describe("with a successful server response", function () {
 			beforeEach(function () {
-				http.expectPOST("/api/test-name", {
-					password: scope.masterPassword
-				}).respond(200, JSON.stringify({
-					name: "Test Database",
-					description: "This is a test database"
-				}));
-
-				http.flush();
-			});
-
-			it("should have posted master password to server", function () {
-				http.verifyNoOutstandingExpectation();
+				scope.$apply(function () {
+					databaseMock.deferred.resolve({
+						name: "Test Database",
+						description: "This is a test database",
+						groups: [{
+							id: "1234",
+							name: "Test Group"
+						}]
+					});
+				});
 			});
 
 			it("should not indicate activity", function () {
 				expect(scope.isUnlocking).not.to.be.ok;
 			});
 
-			it("should clear master password", function () {
-				expect(scope.masterPassword).not.to.be.ok;
+			it("should set location path to the root group ID", function () {
+				expect(location.path()).to.equal("/test-name/1234");
+			});
+		});
+
+		describe("with a successful server response with a non-default redirect ID", function () {
+			beforeEach(function () {
+				scope.redirectId = "5678";
+
+				scope.$apply(function () {
+					databaseMock.deferred.resolve({
+						name: "Test Database",
+						description: "This is a test database",
+						groups: [{
+							id: "1234",
+							name: "Test Group"
+						}, {
+							id: "5678",
+							name: "Test Group 2"
+						}]
+					});
+				});
 			});
 
-			it("should populate database data from server", function () {
-				expect(scope.database).not.to.be.undefined;
-				expect(scope.database.name).to.equal("Test Database");
+			it("should set location path to the specified group ID", function () {
+				expect(location.path()).to.equal("/test-name/5678");
 			});
 		});
 	});

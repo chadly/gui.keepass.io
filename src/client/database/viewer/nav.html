@@ -3,7 +3,7 @@
 </ul>
 
 <script type="text/ng-template" id="kp-menu-group.html">
-	<a class="kp-tree-item" href="#" ng-click="select(group)" ng-class="{ selected: isSelected(group) }">
+	<a class="kp-tree-item" ng-href="{{group.id}}" ng-class="{ selected: isSelected(group) }">
 		<i class="fa" ng-class="{ 'fa-folder-open': isSelected(group), 'fa-folder': !isSelected(group) }"></i>
 		{{group.name}}
 	</a>

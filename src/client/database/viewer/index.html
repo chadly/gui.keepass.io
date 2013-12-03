@@ -1,0 +1,23 @@
+﻿<header>
+	<h2>{{title}}</h2>
+	<p>{{description}}</p>
+</header>
+
+<div class="kp-database-container">
+	<div ng-include="'/assets/database/viewer/nav.html'" class="kp-nav"></div>
+
+	<div class="kp-entry-container">
+		<ol class="breadcrumb" ng-if="breadcrumbs.length">
+			<li ng-repeat="item in breadcrumbs">
+				<a ng-href="{{item.id}}">
+					<i class="fa fa-key" ng-if="item.isEntry"></i>
+					<i class="fa fa-folder-open" ng-if="!item.isEntry"></i>
+					{{item.title || item.name}}
+				</a>
+			</li>
+		</ol>
+
+		<ng-include ng-if="selectedItem.isEntry" src="'/assets/database/viewer/entry.html'" ng-controller="DatabaseEntryCtrl"></ng-include>
+		<ng-include ng-if="selectedItem && !selectedItem.isEntry" src="'/assets/database/viewer/items.html'"></ng-include>
+	</div>
+</div>

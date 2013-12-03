@@ -9,8 +9,13 @@
 		})
 		.when("/:name", {
 			controller: "DatabaseUnlockCtrl",
-			templateUrl: "/assets/database/unlock.html",
+			templateUrl: "/assets/database/unlock/index.html",
 			title: "Database Unlocker"
+		})
+		.when("/:name/:id", {
+			controller: "DatabaseViewerCtrl",
+			templateUrl: "/assets/database/viewer/index.html",
+			title: "Database Viewer"
 		})
 		.otherwise({
 			templateUrl: "/assets/errors/404.html",
