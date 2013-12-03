@@ -60,4 +60,9 @@
 
 		return false;
 	};
+
+	//initially select the root group
+	if ($scope.groups && $scope.groups.length) {
+		$scope.select($scope.groups[0]);
+	}
 });

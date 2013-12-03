@@ -78,6 +78,11 @@ describe("Database Viewer Controller", function () {
 			var entry = scope.groups[0].entries[1];
 			expect(entry.url).to.equal("https://www.bing.com");
 		});
+
+		it("should select first group on load", function () {
+			var group = scope.groups[0];
+			expect(scope.selectedItem).to.equal(group);
+		});
 	});
 
 	describe("when selecting a database group", function () {
