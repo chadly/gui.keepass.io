@@ -69,6 +69,7 @@ exports.init = function (app) {
 			var srcGroup = src.groups[groupId];
 
 			var destGroup = {
+				id: groupId,
 				name: srcGroup.name,
 				notes: srcGroup.notes
 			};
@@ -77,6 +78,7 @@ exports.init = function (app) {
 			for (var entryId in srcGroup.entries) {
 				var srcEntry = srcGroup.entries[entryId];
 				destGroup.entries.push({
+					id: entryId,
 					title: srcEntry.title,
 					url: srcEntry.url,
 					username: srcEntry.username,
