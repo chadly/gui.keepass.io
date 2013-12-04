@@ -44,6 +44,24 @@ module.exports = function (grunt) {
 					cwd: "bower_components/bootstrap/dist/fonts/",
 					src: ["*.*"],
 					dest: "src/client/vendor/bootstrap/fonts/"
+				}, {
+					expand: true,
+					cwd: "bower_components/bootstrap/dist/js/",
+					src: ["bootstrap.js"],
+					dest: "src/client/vendor/bootstrap/js/"
+				}]
+			},
+			"font-awesome": {
+				files: [{
+					expand: true,
+					cwd: "bower_components/font-awesome/css/",
+					src: ["*.css"],
+					dest: "src/client/vendor/font-awesome/css/"
+				}, {
+					expand: true,
+					cwd: "bower_components/font-awesome/fonts/",
+					src: ["*.*"],
+					dest: "src/client/vendor/font-awesome/fonts/"
 				}]
 			},
 			"bootstrap-growl": {
@@ -55,6 +73,22 @@ module.exports = function (grunt) {
 				cwd: "bower_components/bootswatch/slate/",
 				src: ["*.less"],
 				dest: "src/client/vendor/bootswatch/slate/"
+			},
+			"jquery": {
+				src: "bower_components/jquery/jquery.js",
+				dest: "src/client/vendor/jquery.js"
+			},
+			"angular": {
+				src: "bower_components/angular/angular.js",
+				dest: "src/client/vendor/angular.js"
+			},
+			"angular-route": {
+				src: "bower_components/angular-route/angular-route.js",
+				dest: "src/client/vendor/angular-route.js"
+			},
+			"angular-mocks": {
+				src: "bower_components/angular-mocks/angular-mocks.js",
+				dest: "src/client/vendor/angular-mocks.js"
 			}
 		},
 		mocha: {

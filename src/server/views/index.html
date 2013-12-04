@@ -4,7 +4,7 @@
 		<title ng-bind="title + ' - {{title}}'">{{title}}</title>
 
 		<link rel="stylesheet" href="/assets/app.less.css" />
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<main ng-class="cssScope" ng-view></main>
@@ -13,10 +13,8 @@
 			<p>&copy; {{title}} 2013</p>
 		</footer>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.js"></script>
+		<script src="/assets/vendor/jquery.js"></script>
+		<script src="/assets/vendor/angular.js"></script>
 		{{{scripts}}}
 	</body>
 </html>
