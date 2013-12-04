@@ -3,10 +3,26 @@
 	<p>{{description}}</p>
 </header>
 
+<nav>
+	<ul>
+		<li>
+			<a href="#">
+				<i class="fa fa-eye-slash"></i>
+				Hide Sensitive Data
+			</a>
+		</li>
+	</ul>
+
+	<form role="search">
+		<input type="text" placeholder="Search" ng-model="filter" />
+	</form>
+</nav>
+
 <div class="kp-database-container">
 	<div ng-include="'/assets/database/viewer/nav.html'" class="kp-nav"></div>
 
 	<div class="kp-entry-container">
+		<h4>{{filter}}</h4>
 		<ol class="breadcrumb" ng-if="breadcrumbs.length">
 			<li ng-repeat="item in breadcrumbs">
 				<a ng-href="{{item.id}}">

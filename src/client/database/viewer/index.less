@@ -17,6 +17,25 @@
 		font-weight: bold;
 	}
 
+	nav {
+		&:extend(.navbar all);
+		&:extend(.navbar-default all);
+
+		ul {
+			&:extend(.nav all);
+			&:extend(.navbar-nav all);
+		}
+
+		form[role="search"] {
+			&:extend(.navbar-form all);
+			&:extend(.navbar-right all);
+
+			input {
+				&:extend(.form-control all);
+			}
+		}
+	}
+
 	.kp-database-container {
 		.make-row();
 
