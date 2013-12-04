@@ -4,7 +4,7 @@
 //creates script tags for scripts in assets folder
 module.exports = function (folder) {
 	return function (req, res, next) {
-		glob(path.join(folder, "/**/*.js"), {
+		glob("**/*.js", {
 			cwd: folder
 		}, function (err, files) {
 			if (err) throw err;
@@ -12,8 +12,8 @@ module.exports = function (folder) {
 			res.locals.scripts = "";
 
 			files.forEach(function (file) {
-				if (file.indexOf("test") < 0) {
-					file = path.join("/assets/", path.relative(folder, file)).replace(/\\/g, "/");
+				if (!isExcluded(file)) {
+					file = path.join("/assets/", file).replace(/\\/g, "/");
 
 					var scriptTag = '<script src="' + file + '"></script>';
 
@@ -33,3 +33,19 @@ module.exports = function (folder) {
 		});
 	};
 };
+
+function isExcluded(file) {
+	if (file.indexOf("test") >= 0) {
+		return true;
+	}
+
+	if (file.indexOf("ngapp") >= 0) {
+		return true;
+	}
+
+	if (file.indexOf("ngtemplates") >= 0) {
+		return true;
+	}
+
+	return false;
+}

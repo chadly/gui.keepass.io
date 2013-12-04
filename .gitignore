@@ -4,4 +4,6 @@
 /bower_components
 /node_modules
 /src/client/vendor
+/src/client/*.min.js
+/src/client/ng*.js
 /databases/*

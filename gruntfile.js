@@ -17,7 +17,12 @@ module.exports = function (grunt) {
 		},
 		jshint: {
 			server: ["src/server/**/*.js"],
-			client: ["src/client/**/*.js", "!src/client/vendor/**/*.js", "!src/client/**/*.min.js"]
+			client: [
+				"src/client/**/*.js",
+				"!src/client/vendor/**/*.js",
+				"!src/client/*.min.js",
+				"!src/client/ng*.js"
+			]
 		},
 		copy: {
 			config: {
@@ -104,6 +109,34 @@ module.exports = function (grunt) {
 				files: ["**/*.less"],
 				tasks: ["less:dev"]
 			}
+		},
+		ngmin: {
+			app: {
+				src: [
+					"src/client/app.js",
+					"src/client/**/*.js",
+					"!**/*.min.js",
+					"!ng*.js"
+				],
+				dest: "src/client/ngapp.js"
+			}
+		},
+		ngtemplates: {
+			options: {
+				prepend: "/"
+			},
+			app: {
+				src: [
+					"src/client/**/*.html"
+				],
+				dest: "src/client/ngtemplates.js"
+			}
+		},
+		uglify: {
+			app: {
+				src: ["src/client/ng*.js", "!src/client/*.min.js"],
+				dest: "src/client/ngapp.min.js"
+			}
 		}
 	});
 
@@ -112,8 +145,11 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-mocha");
+	grunt.loadNpmTasks("grunt-ngmin");
+	grunt.loadNpmTasks("grunt-angular-templates");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 
 	grunt.registerTask("dev", ["copy", "less:dev", "jshint"]);
-	grunt.registerTask("prod", ["copy", "less:prod", "jshint"]);
+	grunt.registerTask("dist", ["copy", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify"]);
 	grunt.registerTask("default", ["dev"]);
 };
