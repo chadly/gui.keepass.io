@@ -34,6 +34,11 @@
     <Compile Include="src\client\home\tests.js" />
     <Compile Include="src\client\database\unlock\controller.js" />
     <Compile Include="src\client\database\unlock\controller.tests.js" />
+    <Compile Include="src\client\vendor\angular-mocks.js" />
+    <Compile Include="src\client\vendor\angular-route.js" />
+    <Compile Include="src\client\vendor\angular.js" />
+    <Compile Include="src\client\vendor\bootstrap\js\bootstrap.js" />
+    <Compile Include="src\client\vendor\jquery.js" />
     <Compile Include="src\server\app.js" />
     <Compile Include="src\server\routes\api.js" />
     <Compile Include="src\server\routes\index.js" />
@@ -104,6 +109,13 @@
     <Compile Include="src\client\lib\page-titles.js" />
     <Compile Include="src\client\vendor\jquery.bootstrap-growl.js" />
     <Content Include="src\client\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\client\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="src\client\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="src\client\vendor\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="src\server\views\index.vash" />
   </ItemGroup>
   <ItemGroup>
@@ -117,10 +129,14 @@
     <Folder Include="src\client\vendor\" />
     <Folder Include="src\client\vendor\bootstrap\" />
     <Folder Include="src\client\vendor\bootstrap\fonts\" />
+    <Folder Include="src\client\vendor\bootstrap\js\" />
     <Folder Include="src\client\vendor\bootstrap\less\" />
     <Folder Include="src\client\vendor\bootswatch\" />
     <Folder Include="src\client\vendor\bootswatch\slate\" />
     <Folder Include="src\client\database\" />
+    <Folder Include="src\client\vendor\font-awesome\" />
+    <Folder Include="src\client\vendor\font-awesome\css\" />
+    <Folder Include="src\client\vendor\font-awesome\fonts\" />
     <Folder Include="src\server\lib\" />
     <Folder Include="src\server\" />
     <Folder Include="src\server\routes\" />
