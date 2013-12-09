@@ -14,9 +14,11 @@ module.exports = app;
 app.configure(function () {
 	app.set("port", config.port || 1337);
 	app.set("databasePath", config.databasePath || path.join(__dirname + "/../../databases"));
+	app.set("debug", !!config.debug);
 
 	app.locals({
-		title: "Keepass Web GUI"
+		title: "Keepass Web GUI",
+		debug: app.get("debug")
 	});
 });
 
