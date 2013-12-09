@@ -97,7 +97,6 @@
     <Content Include="src\client\database\viewer\index.html" />
     <Content Include="src\client\database\unlock\index.html" />
     <Content Include="src\client\database\unlock\index.less" />
-    <Content Include="src\server\views\index.html" />
     <Content Include="src\client\errors\404.html" />
     <Content Include="src\client\errors\homer.png" />
     <Compile Include="src\client\errors\handler.js" />
@@ -105,6 +104,7 @@
     <Compile Include="src\client\lib\page-titles.js" />
     <Compile Include="src\client\vendor\jquery.bootstrap-growl.js" />
     <Content Include="src\client\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\server\views\index.vash" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src" />

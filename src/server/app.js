@@ -25,10 +25,6 @@ app.configure(function () {
 	app.set("views", __dirname + "/views");
 	app.set("view engine", "vash");
 
-	app.engine("jshtml", function (path, options, fn) {
-		fn(null, razor.render(path, options));
-	});
-
 	app.use(express.favicon());
 
 	app.use(express.logger("dev"));
