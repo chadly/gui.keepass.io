@@ -1,7 +1,6 @@
 ﻿var express = require("express"),
 	http = require("http"),
 	path = require("path"),
-	hogan = require("hogan-express"),
 	routes = require("./routes"),
 	scriptEnumerator = require("./lib/script-enumerator"),
 	config = require("./../../config");
@@ -24,8 +23,11 @@ app.configure(function () {
 
 app.configure(function () {
 	app.set("views", __dirname + "/views");
-	app.set("view engine", "html");
-	app.engine("html", hogan);
+	app.set("view engine", "vash");
+
+	app.engine("jshtml", function (path, options, fn) {
+		fn(null, razor.render(path, options));
+	});
 
 	app.use(express.favicon());
 
