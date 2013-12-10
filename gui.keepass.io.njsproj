@@ -109,13 +109,25 @@
     <Compile Include="src\client\lib\page-titles.js" />
     <Compile Include="src\client\vendor\jquery.bootstrap-growl.js" />
     <Content Include="src\client\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="src\client\vendor\font-awesome\css\font-awesome.css" />
-    <Content Include="src\client\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="src\client\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="src\client\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="src\client\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="src\client\vendor\font-awesome\less\core.less" />
+    <Content Include="src\client\vendor\font-awesome\less\extras.less" />
+    <Content Include="src\client\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="src\client\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="src\client\vendor\font-awesome\less\icons.less" />
+    <Content Include="src\client\vendor\font-awesome\less\larger.less" />
+    <Content Include="src\client\vendor\font-awesome\less\list.less" />
+    <Content Include="src\client\vendor\font-awesome\less\mixins.less" />
+    <Content Include="src\client\vendor\font-awesome\less\path.less" />
+    <Content Include="src\client\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="src\client\vendor\font-awesome\less\spinning.less" />
+    <Content Include="src\client\vendor\font-awesome\less\stacked.less" />
+    <Content Include="src\client\vendor\font-awesome\less\variables.less" />
     <Content Include="src\server\views\index.vash" />
   </ItemGroup>
   <ItemGroup>
@@ -135,8 +147,8 @@
     <Folder Include="src\client\vendor\bootswatch\slate\" />
     <Folder Include="src\client\database\" />
     <Folder Include="src\client\vendor\font-awesome\" />
-    <Folder Include="src\client\vendor\font-awesome\css\" />
     <Folder Include="src\client\vendor\font-awesome\fonts\" />
+    <Folder Include="src\client\vendor\font-awesome\less\" />
     <Folder Include="src\server\lib\" />
     <Folder Include="src\server\" />
     <Folder Include="src\server\routes\" />
