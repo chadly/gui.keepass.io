@@ -115,26 +115,35 @@ module.exports = function (grunt) {
 				src: [
 					"src/client/app.js",
 					"src/client/**/*.js",
+					"!src/client/vendor/**/*.*",
+					"!**/*tests.js",
 					"!**/*.min.js",
-					"!ng*.js"
+					"!**/ng*.js"
 				],
 				dest: "src/client/ngapp.js"
 			}
 		},
 		ngtemplates: {
 			options: {
-				prepend: "/"
+				url: function (url) {
+					return url.replace("src/client/", "/assets/");
+				}
 			},
-			app: {
-				src: [
-					"src/client/**/*.html"
-				],
+			'keepass.io': {
+				src: ["src/client/**/*.html"],
 				dest: "src/client/ngtemplates.js"
 			}
 		},
 		uglify: {
 			app: {
-				src: ["src/client/ng*.js", "!src/client/*.min.js"],
+				src: [
+					"src/client/vendor/jquery.js",
+					"src/client/vendor/angular.js",
+					"src/client/vendor/**/*.js",
+					"!src/client/vendor/angular-mocks.js",
+					"src/client/ng*.js",
+					"!src/client/*.min.js"
+				],
 				dest: "src/client/ngapp.min.js"
 			}
 		}
