@@ -2,9 +2,7 @@
 <html ng-app="keepass.io">
 	<head>
 		<title ng-bind="title + ' - @model.title'">@model.title</title>
-
 		<link rel="stylesheet" href="/assets/app.less.css" />
-		<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<main ng-class="cssScope" ng-view></main>

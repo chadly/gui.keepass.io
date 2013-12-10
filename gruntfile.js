@@ -3,6 +3,9 @@ var path = require("path");
 module.exports = function (grunt) {
 	grunt.initConfig({
 		less: {
+			options: {
+				relativeUrls: true
+			},
 			dev: {
 				src: ["src/client/app.less"],
 				dest: "src/client/app.less.css"
@@ -59,9 +62,9 @@ module.exports = function (grunt) {
 			"font-awesome": {
 				files: [{
 					expand: true,
-					cwd: "bower_components/font-awesome/css/",
-					src: ["*.css"],
-					dest: "src/client/vendor/font-awesome/css/"
+					cwd: "bower_components/font-awesome/less/",
+					src: ["*.less"],
+					dest: "src/client/vendor/font-awesome/less/"
 				}, {
 					expand: true,
 					cwd: "bower_components/font-awesome/fonts/",
