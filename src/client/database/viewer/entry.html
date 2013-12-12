@@ -8,13 +8,22 @@
 	<section class="body">
 		<dl class="fields">
 			<dt ng-if="username">Username</dt>
-			<dd ng-if="username">{{username}}</dd>
+			<dd ng-if="username">
+				{{username}}
+				<i class="fa fa-clipboard" clipboard="username" title="Copy to clipboard"></i>
+			</dd>
 
 			<dt ng-if="password">Password</dt>
-			<dd ng-if="password">{{password}}</dd>
+			<dd ng-if="password">
+				{{password}}
+				<i class="fa fa-clipboard" clipboard="password" title="Copy to clipboard"></i>
+			</dd>
 
 			<dt ng-repeat-start="field in fields" ng-if="field.value">{{field.key}}</dt>
-			<dd ng-repeat-end ng-if="field.value">{{field.value}}</dd>
+			<dd ng-repeat-end ng-if="field.value">
+				{{field.value}}
+				<i class="fa fa-clipboard" clipboard="field.value" title="Copy to clipboard"></i>
+			</dd>
 
 			<dt ng-if="notes">Notes</dt>
 			<dd ng-if="notes"><pre>{{notes}}</pre></dd>

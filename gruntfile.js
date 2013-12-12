@@ -97,6 +97,14 @@ module.exports = function (grunt) {
 			"angular-mocks": {
 				src: "bower_components/angular-mocks/angular-mocks.js",
 				dest: "src/client/vendor/angular-mocks.js"
+			},
+			"zeroclipboard": {
+				files: [{
+					expand: true,
+					cwd: "bower_components/zeroclipboard/",
+					src: ["zeroclipboard.js", "zeroclipboard.swf"],
+					dest: "src/client/vendor/"
+				}]
 			}
 		},
 		mocha: {

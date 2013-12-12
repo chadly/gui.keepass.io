@@ -34,11 +34,13 @@
     <Compile Include="src\client\home\tests.js" />
     <Compile Include="src\client\database\unlock\controller.js" />
     <Compile Include="src\client\database\unlock\controller.tests.js" />
+    <Compile Include="src\client\lib\clipboard.js" />
     <Compile Include="src\client\vendor\angular-mocks.js" />
     <Compile Include="src\client\vendor\angular-route.js" />
     <Compile Include="src\client\vendor\angular.js" />
     <Compile Include="src\client\vendor\bootstrap\js\bootstrap.js" />
     <Compile Include="src\client\vendor\jquery.js" />
+    <Compile Include="src\client\vendor\zeroclipboard.js" />
     <Compile Include="src\server\app.js" />
     <Compile Include="src\server\routes\api.js" />
     <Compile Include="src\server\routes\index.js" />
@@ -128,6 +130,7 @@
     <Content Include="src\client\vendor\font-awesome\less\spinning.less" />
     <Content Include="src\client\vendor\font-awesome\less\stacked.less" />
     <Content Include="src\client\vendor\font-awesome\less\variables.less" />
+    <Content Include="src\client\vendor\zeroclipboard.swf" />
     <Content Include="src\server\views\index.vash" />
   </ItemGroup>
   <ItemGroup>
