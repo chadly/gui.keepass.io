@@ -18,8 +18,5 @@
     "angular-route": "~1.2.3",
     "font-awesome": "~4.0.3",
     "zeroclipboard": "~1.2.3"
-  },
-  "resolutions": {
-    "angular": "~1.2.3"
   }
 }
