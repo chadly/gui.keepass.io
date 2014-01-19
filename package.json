@@ -14,7 +14,8 @@
     "keepass.io": "~0.2.8",
     "nimble": "0.0.2",
     "vash": "~0.7.6-3",
-    "optional": "0.1.0-2"
+    "optional": "0.1.0-2",
+    "pem": "~1.2.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
