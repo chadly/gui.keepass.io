@@ -102,6 +102,6 @@ exports.init = function (app) {
 	}
 
 	function sanitize(id) {
-		return id.replace(/\//g, "--");
+		return id.replace(/\//g, "--").replace(/\+/g, "__");
 	}
 };
