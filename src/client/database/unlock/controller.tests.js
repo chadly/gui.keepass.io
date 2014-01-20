@@ -1,4 +1,4 @@
-﻿//https://github.com/chaijs/chai/issues/41
+//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
 describe("Database Unlock Controller", function () {
