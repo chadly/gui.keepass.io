@@ -186,7 +186,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-shell");
 
 	grunt.registerTask("dev", ["copy:vendor", "less:dev", "jshint"]);
-	grunt.registerTask("build", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "shell:prune", "copy:build"]);
+	grunt.registerTask("package", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify"]);
+	grunt.registerTask("build", ["package", "shell:prune", "copy:build"]);
 	grunt.registerTask("test", ["copy:vendor", "mocha"]);
 	grunt.registerTask("default", ["dev"]);
 };
