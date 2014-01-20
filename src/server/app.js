@@ -3,8 +3,7 @@ var express = require("express"),
 	path = require("path"),
 	routes = require("./routes"),
 	scriptEnumerator = require("./lib/script-enumerator"),
-	optional = require("optional"),
-	config = optional("./../config.json") || {};
+	config = optional("./../config.json");
 
 var assetsDir = path.join(__dirname + "/../client");
 
@@ -49,3 +48,14 @@ app.configure(function () {
 });
 
 routes.init(app);
+
+function optional(name) {
+	var item;
+	try {
+		item = require(name);
+	} catch (e) {
+		item = {};
+	}
+	
+	return item;
+}
