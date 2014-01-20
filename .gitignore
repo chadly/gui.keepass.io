@@ -1,4 +1,4 @@
-*.suo
+.directory
 *.less.css
 /config.js
 /bower_components
