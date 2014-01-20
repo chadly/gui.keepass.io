@@ -7,3 +7,9 @@ build:
         - npm-install
         - grunt:
             tasks: dist
+deploy:
+    steps:
+        - wercker-labs/azure-ftp-deploy:
+            publish-url: $FTP_URL
+            username: $FTP_USERNAME
+            password: $FTP_PASSWORD
