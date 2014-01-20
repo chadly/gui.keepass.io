@@ -63,7 +63,7 @@ module.exports = function (grunt) {
 					expand: true,
 					cwd: "bower_components/bootswatch/slate/",
 					src: ["*.less"],
-					dest: "src/client/vendor/bootswatch/slate/"
+					dest: "src/client/vendor/bootswatch/"
 				}, {
 					expand: true,
 					cwd: "bower_components/jquery/",
