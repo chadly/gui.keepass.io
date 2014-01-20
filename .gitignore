@@ -3,9 +3,9 @@
 /src/config.json
 /bower_components
 /node_modules
-/src/client/vendor
-/src/client/*.min.js
-/src/client/ng*.js
+/src/public/vendor
+/src/public/*.min.js
+/src/public/ng*.js
 /databases/*
 /build
 npm-debug.log

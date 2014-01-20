@@ -7,24 +7,23 @@ module.exports = function (grunt) {
 				relativeUrls: true
 			},
 			dev: {
-				src: ["src/client/app.less"],
-				dest: "src/client/app.less.css"
+				src: ["src/public/app.less"],
+				dest: "src/public/app.less.css"
 			},
 			prod: {
 				options: {
 					yuicompress: true
 				},
-				src: ["src/client/app.less"],
-				dest: "src/client/app.less.css"
+				src: ["src/public/app.less"],
+				dest: "src/public/app.less.css"
 			}
 		},
 		jshint: {
-			server: ["src/server/**/*.js"],
-			client: [
-				"src/client/**/*.js",
-				"!src/client/vendor/**/*.js",
-				"!src/client/*.min.js",
-				"!src/client/ng*.js"
+			app: [
+				"src/**/*.js",
+				"!src/public/vendor/**/*.js",
+				"!src/public/*.min.js",
+				"!src/public/ng*.js"
 			]
 		},
 		copy: {
@@ -33,62 +32,62 @@ module.exports = function (grunt) {
 					expand: true,
 					cwd: "bower_components/bootstrap/less/",
 					src: ["*.less"],
-					dest: "src/client/vendor/bootstrap/less/"
+					dest: "src/public/vendor/bootstrap/less/"
 				}, {
 					expand: true,
 					cwd: "bower_components/bootstrap/dist/fonts/",
 					src: ["*.*"],
-					dest: "src/client/vendor/bootstrap/fonts/"
+					dest: "src/public/vendor/bootstrap/fonts/"
 				}, {
 					expand: true,
 					cwd: "bower_components/bootstrap/dist/js/",
 					src: ["bootstrap.js"],
-					dest: "src/client/vendor/bootstrap/js/"
+					dest: "src/public/vendor/bootstrap/js/"
 				}, {
 					expand: true,
 					cwd: "bower_components/font-awesome/less/",
 					src: ["*.less"],
-					dest: "src/client/vendor/font-awesome/less/"
+					dest: "src/public/vendor/font-awesome/less/"
 				}, {
 					expand: true,
 					cwd: "bower_components/font-awesome/fonts/",
 					src: ["*.*"],
-					dest: "src/client/vendor/font-awesome/fonts/"
+					dest: "src/public/vendor/font-awesome/fonts/"
 				}, {
 					expand: true,
 					cwd: "bower_components/bootstrap-growl/",
 					src: ["jquery.bootstrap-growl.js"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}, {
 					expand: true,
 					cwd: "bower_components/bootswatch/slate/",
 					src: ["*.less"],
-					dest: "src/client/vendor/bootswatch/"
+					dest: "src/public/vendor/bootswatch/"
 				}, {
 					expand: true,
 					cwd: "bower_components/jquery/",
 					src: ["jquery.js"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}, {
 					expand: true,
 					cwd: "bower_components/angular/",
 					src: ["angular.js"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}, {
 					expand: true,
 					cwd: "bower_components/angular-route/",
 					src: ["angular-route.js"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}, {
 					expand: true,
 					cwd: "bower_components/angular-mocks/",
 					src: ["angular-mocks.js"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}, {
 					expand: true,
 					cwd: "bower_components/zeroclipboard/",
 					src: ["ZeroClipboard.js", "ZeroClipboard.swf"],
-					dest: "src/client/vendor/"
+					dest: "src/public/vendor/"
 				}]
 			},
 			build: {
@@ -97,15 +96,15 @@ module.exports = function (grunt) {
 					cwd: "src/",
 					src: [
 						"**/*.*",
-						"!client/**/*",
-						"client/ngapp.min.js",
-						"client/*.less.css",
-						"client/**/*.eot",
-						"client/**/*.svg",
-						"client/**/*.ttf",
-						"client/**/*.woff",
-						"client/**/*.otf",
-						"client/**/*.swf"
+						"!public/**/*",
+						"public/ngapp.min.js",
+						"public/*.less.css",
+						"public/**/*.eot",
+						"public/**/*.svg",
+						"public/**/*.ttf",
+						"public/**/*.woff",
+						"public/**/*.otf",
+						"public/**/*.swf"
 					],
 					dest: "build/"
 				}, {
@@ -117,7 +116,7 @@ module.exports = function (grunt) {
 		},
 		mocha: {
 			client: {
-				src: ["src/client/test.html"]
+				src: ["src/public/test.html"]
 			},
 			options: {
 				run: true
@@ -132,38 +131,38 @@ module.exports = function (grunt) {
 		ngmin: {
 			app: {
 				src: [
-					"src/client/app.js",
-					"src/client/**/*.js",
-					"!src/client/vendor/**/*.*",
+					"src/public/app.js",
+					"src/public/**/*.js",
+					"!src/public/vendor/**/*.*",
 					"!**/*tests.js",
 					"!**/*.min.js",
 					"!**/ng*.js"
 				],
-				dest: "src/client/ngapp.js"
+				dest: "src/public/ngapp.js"
 			}
 		},
 		ngtemplates: {
 			options: {
 				url: function (url) {
-					return url.replace("src/client/", "/assets/");
+					return url.replace("src/public/", "/assets/");
 				}
 			},
 			'keepass.io': {
-				src: ["src/client/**/*.html"],
-				dest: "src/client/ngtemplates.js"
+				src: ["src/public/**/*.html"],
+				dest: "src/public/ngtemplates.js"
 			}
 		},
 		uglify: {
 			app: {
 				src: [
-					"src/client/vendor/jquery.js",
-					"src/client/vendor/angular.js",
-					"src/client/vendor/**/*.js",
-					"!src/client/vendor/angular-mocks.js",
-					"src/client/ng*.js",
-					"!src/client/*.min.js"
+					"src/public/vendor/jquery.js",
+					"src/public/vendor/angular.js",
+					"src/public/vendor/**/*.js",
+					"!src/public/vendor/angular-mocks.js",
+					"src/public/ng*.js",
+					"!src/public/*.min.js"
 				],
-				dest: "src/client/ngapp.min.js"
+				dest: "src/public/ngapp.min.js"
 			}
 		},
 		shell: {

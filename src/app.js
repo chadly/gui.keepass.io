@@ -3,16 +3,16 @@ var express = require("express"),
 	path = require("path"),
 	routes = require("./routes"),
 	scriptEnumerator = require("./lib/script-enumerator"),
-	config = optional("./../config.json");
+	config = optional("./config.json");
 
-var assetsDir = path.join(__dirname + "/../client");
+var assetsDir = path.join(__dirname + "/public");
 
 var app = express();
 module.exports = app;
 
 app.configure(function () {
 	app.set("port", process.env.PORT || config.port || 1337);
-	app.set("databasePath", config.databasePath || path.join(__dirname + "/../../databases"));
+	app.set("databasePath", config.databasePath || path.join(__dirname + "/../databases"));
 	app.set("debug", !!config.debug);
 
 	app.locals({

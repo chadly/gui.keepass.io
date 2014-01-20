@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "grunt dev",
-    "start": "node src/server/index.js",
+    "start": "node src/index.js",
     "test": "grunt test"
   },
   "dependencies": {
