@@ -6,7 +6,7 @@ build:
             code: sudo npm install -g bower
         - npm-install
         - grunt:
-            tasks: dist
+            tasks: build
         - npm-test
 deploy:
     steps:

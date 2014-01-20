@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 					dest: "src/client/vendor/"
 				}]
 			},
-			dist: {
+			build: {
 				files: [{
 					expand: true,
 					cwd: "src/",
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-shell");
 
 	grunt.registerTask("dev", ["copy:vendor", "less:dev", "jshint"]);
-	grunt.registerTask("dist", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "shell:prune", "copy:dist"]);
+	grunt.registerTask("build", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "shell:prune", "copy:build"]);
 	grunt.registerTask("test", ["copy:vendor", "mocha"]);
 	grunt.registerTask("default", ["dev"]);
 };
