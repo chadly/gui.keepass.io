@@ -7,4 +7,5 @@
 /src/client/*.min.js
 /src/client/ng*.js
 /databases/*
+/build
 npm-debug.log

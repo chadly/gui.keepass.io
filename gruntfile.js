@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 					return !(grunt.file.exists(dest));
 				}
 			},
-			bootstrap: {
+			vendor: {
 				files: [{
 					expand: true,
 					cwd: "bower_components/bootstrap/less/",
@@ -57,10 +57,7 @@ module.exports = function (grunt) {
 					cwd: "bower_components/bootstrap/dist/js/",
 					src: ["bootstrap.js"],
 					dest: "src/client/vendor/bootstrap/js/"
-				}]
-			},
-			"font-awesome": {
-				files: [{
+				}, {
 					expand: true,
 					cwd: "bower_components/font-awesome/less/",
 					src: ["*.less"],
@@ -70,40 +67,53 @@ module.exports = function (grunt) {
 					cwd: "bower_components/font-awesome/fonts/",
 					src: ["*.*"],
 					dest: "src/client/vendor/font-awesome/fonts/"
-				}]
-			},
-			"bootstrap-growl": {
-				src: "bower_components/bootstrap-growl/jquery.bootstrap-growl.js",
-				dest: "src/client/vendor/jquery.bootstrap-growl.js"
-			},
-			"bootswatch": {
-				expand: true,
-				cwd: "bower_components/bootswatch/slate/",
-				src: ["*.less"],
-				dest: "src/client/vendor/bootswatch/slate/"
-			},
-			"jquery": {
-				src: "bower_components/jquery/jquery.js",
-				dest: "src/client/vendor/jquery.js"
-			},
-			"angular": {
-				src: "bower_components/angular/angular.js",
-				dest: "src/client/vendor/angular.js"
-			},
-			"angular-route": {
-				src: "bower_components/angular-route/angular-route.js",
-				dest: "src/client/vendor/angular-route.js"
-			},
-			"angular-mocks": {
-				src: "bower_components/angular-mocks/angular-mocks.js",
-				dest: "src/client/vendor/angular-mocks.js"
-			},
-			"zeroclipboard": {
-				files: [{
+				}, {
+					expand: true,
+					cwd: "bower_components/bootstrap-growl/",
+					src: ["jquery.bootstrap-growl.js"],
+					dest: "src/client/vendor/"
+				}, {
+					expand: true,
+					cwd: "bower_components/bootswatch/slate/",
+					src: ["*.less"],
+					dest: "src/client/vendor/bootswatch/slate/"
+				}, {
+					expand: true,
+					cwd: "bower_components/jquery/",
+					src: ["jquery.js"],
+					dest: "src/client/vendor/"
+				}, {
+					expand: true,
+					cwd: "bower_components/angular/",
+					src: ["angular.js"],
+					dest: "src/client/vendor/"
+				}, {
+					expand: true,
+					cwd: "bower_components/angular-route/",
+					src: ["angular-route.js"],
+					dest: "src/client/vendor/"
+				}, {
+					expand: true,
+					cwd: "bower_components/angular-mocks/",
+					src: ["angular-mocks.js"],
+					dest: "src/client/vendor/"
+				}, {
 					expand: true,
 					cwd: "bower_components/zeroclipboard/",
 					src: ["zeroclipboard.js", "zeroclipboard.swf"],
 					dest: "src/client/vendor/"
+				}]
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: "src/",
+					src: ["**/*.*", "!client/**/*", "client/ngapp.min.js"],
+					dest: "build/"
+				}, {
+					expand: true,
+					src: ["node_modules/**/*"],
+					dest: "build/"
 				}]
 			}
 		},
@@ -170,7 +180,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 
 	grunt.registerTask("dev", ["copy", "less:dev", "jshint"]);
-	grunt.registerTask("dist", ["copy", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify"]);
-	grunt.registerTask("test", ["copy", "mocha"]);
+	grunt.registerTask("dist", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "copy:dist"]);
+	grunt.registerTask("test", ["copy:vendor", "mocha"]);
 	grunt.registerTask("default", ["dev"]);
 };
