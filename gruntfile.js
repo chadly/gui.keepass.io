@@ -87,7 +87,7 @@ module.exports = function (grunt) {
 				}, {
 					expand: true,
 					cwd: "bower_components/zeroclipboard/",
-					src: ["zeroclipboard.js", "zeroclipboard.swf"],
+					src: ["ZeroClipboard.js", "ZeroClipboard.swf"],
 					dest: "src/client/vendor/"
 				}]
 			},

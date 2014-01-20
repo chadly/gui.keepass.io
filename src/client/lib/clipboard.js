@@ -1,6 +1,6 @@
 angular.module("keepass.io").directive("clipboard", function () {
 	ZeroClipboard.setDefaults({
-		moviePath: "/assets/vendor/zeroclipboard.swf",
+		moviePath: "/assets/vendor/ZeroClipboard.swf",
 		forceHandCursor: true
 	});
 

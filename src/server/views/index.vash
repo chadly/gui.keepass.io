@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="keepass.io">
 	<head>
 		<title ng-bind="title + ' - @model.title'">@model.title</title>
