@@ -37,7 +37,7 @@ You can create a `config.json` file in the `src` directory to configure the appl
 }
 ```
 
-##Running the tests
+###Running the tests
 
 There is a suite of [mocha](http://visionmedia.github.io/mocha/) tests that run as part of the build. Run them locally via:
 
