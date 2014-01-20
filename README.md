@@ -27,5 +27,3 @@ You can then navigate to `localhost:1337` to use the app. Modify the config.js i
 -------------------------------------------------------
 
 Found this project useful? Help support development: `17wS7cQARUrb67Gm7BweApNGKToNbxkMrg`
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chadly/gui.keepass.io/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
