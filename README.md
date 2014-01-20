@@ -26,6 +26,16 @@ npm start
 
 You can then navigate to `localhost:1337` to use the app. Modify the config.js in the root to suit your needs.
 
+##Running the tests
+
+There is a suite of [mocha](http://visionmedia.github.io/mocha/) tests that run as part of the build. Run them locally via:
+
+```bash
+npm test
+```
+
+This will run the tests in a headless browser via [grunt-mocha](https://github.com/kmiyashiro/grunt-mocha). If you want to run them in a real browser, just open `src/client/test.html` in your favorite browser and you can run/debug the tests.
+
 -------------------------------------------------------
 
 Found this project useful? Help support development: `17wS7cQARUrb67Gm7BweApNGKToNbxkMrg`
