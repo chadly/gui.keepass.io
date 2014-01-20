@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
+    "postinstall": "bower install"
     "prestart": "grunt dev",
     "start": "node src/server/index.js",
     "test": "grunt test"

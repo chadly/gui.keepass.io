@@ -10,11 +10,10 @@ Ever been on a strange computer and needed to access your [Keepass](http://keepa
 
 ##How to run
 
-From the project directory, install dependencies using npm and bower:
+From the project directory, install dependencies using npm:
 
 ```bash
 npm install
-bower install
 ```
 
 Note: you will need [bower](http://bower.io/) and [grunt-cli](http://gruntjs.com/getting-started) installed to install web dependencies. Install them if you don't already have them.
