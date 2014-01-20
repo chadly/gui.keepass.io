@@ -171,5 +171,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask("dev", ["copy", "less:dev", "jshint"]);
 	grunt.registerTask("dist", ["copy", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify"]);
+	grunt.registerTask("test", ["copy", "mocha"]);
 	grunt.registerTask("default", ["dev"]);
 };

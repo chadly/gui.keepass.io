@@ -4,7 +4,8 @@
   "private": false,
   "scripts": {
     "prestart": "grunt dev",
-    "start": "node src/server/index.js"
+    "start": "node src/server/index.js",
+    "test": "grunt test"
   },
   "dependencies": {
     "express": "~3.4.8",
