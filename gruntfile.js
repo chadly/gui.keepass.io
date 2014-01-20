@@ -154,6 +154,14 @@ module.exports = function (grunt) {
 				],
 				dest: "src/client/ngapp.min.js"
 			}
+		},
+		shell: {
+			options: {
+				stdout: true
+			},
+			prune: {
+				command: "npm prune --production"
+			}
 		}
 	});
 
@@ -165,9 +173,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-ngmin");
 	grunt.loadNpmTasks("grunt-angular-templates");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-shell");
 
 	grunt.registerTask("dev", ["copy:vendor", "less:dev", "jshint"]);
-	grunt.registerTask("dist", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "copy:dist"]);
+	grunt.registerTask("dist", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "shell:prune", "copy:dist"]);
 	grunt.registerTask("test", ["copy:vendor", "mocha"]);
 	grunt.registerTask("default", ["dev"]);
 };
