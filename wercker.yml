@@ -6,8 +6,7 @@ build:
             code: sudo npm install -g bower
         - npm-install
         - grunt:
-            tasks: build
-        - npm-test
+            tasks: test build
 deploy:
     steps:
         - wercker-labs/azure-ftp-deploy:
