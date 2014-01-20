@@ -105,6 +105,7 @@ module.exports = function (grunt) {
 						"client/**/*.ttf",
 						"client/**/*.woff",
 						"client/**/*.otf",
+						"client/**/*.swf"
 					],
 					dest: "build/"
 				}, {
