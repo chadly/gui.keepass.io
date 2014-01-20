@@ -95,7 +95,17 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					cwd: "src/",
-					src: ["**/*.*", "!client/**/*", "client/ngapp.min.js"],
+					src: [
+						"**/*.*",
+						"!client/**/*",
+						"client/ngapp.min.js",
+						"client/*.less.css",
+						"client/**/*.eot",
+						"client/**/*.svg",
+						"client/**/*.ttf",
+						"client/**/*.woff",
+						"client/**/*.otf",
+					],
 					dest: "build/"
 				}, {
 					expand: true,
