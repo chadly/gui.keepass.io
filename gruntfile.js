@@ -28,19 +28,6 @@ module.exports = function (grunt) {
 			]
 		},
 		copy: {
-			config: {
-				//create the config.js file in the root if it is not already there
-				src: ["config.example.js"],
-				dest: "config.js",
-				filter: function (filepath) {
-					var dest = path.join(
-						grunt.config("copy.config.dest"),
-						// Remove the parent directory from filepath
-						filepath.split(path.sep).slice(2).join(path.sep)
-					);
-					return !(grunt.file.exists(dest));
-				}
-			},
 			vendor: {
 				files: [{
 					expand: true,
@@ -179,7 +166,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-angular-templates");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 
-	grunt.registerTask("dev", ["copy", "less:dev", "jshint"]);
+	grunt.registerTask("dev", ["copy:vendor", "less:dev", "jshint"]);
 	grunt.registerTask("dist", ["copy:vendor", "less:prod", "jshint", "ngmin", "ngtemplates", "uglify", "copy:dist"]);
 	grunt.registerTask("test", ["copy:vendor", "mocha"]);
 	grunt.registerTask("default", ["dev"]);

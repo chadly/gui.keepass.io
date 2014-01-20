@@ -1,9 +1,10 @@
-﻿var express = require("express"),
+var express = require("express"),
 	http = require("http"),
 	path = require("path"),
 	routes = require("./routes"),
 	scriptEnumerator = require("./lib/script-enumerator"),
-	config = require("./../../config");
+	optional = require("optional"),
+	config = optional("./../config.json") || {};
 
 var assetsDir = path.join(__dirname + "/../client");
 

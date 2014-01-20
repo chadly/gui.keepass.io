@@ -24,7 +24,19 @@ Build the web assets and run the server:
 npm start
 ```
 
-You can then navigate to `localhost:1337` to use the app. Modify the config.js in the root to suit your needs.
+You can then navigate to `localhost:1337` to use the app.
+
+###Configuring the Application
+
+You can create a `config.json` file in the `src` directory to configure the application. The default configuration is below:
+
+```json
+{
+	"port": 1337,
+	"databasePath": "databases",
+	"debug": false
+}
+```
 
 ##Running the tests
 

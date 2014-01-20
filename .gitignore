@@ -1,6 +1,6 @@
 .directory
 *.less.css
-/config.js
+/src/config.json
 /bower_components
 /node_modules
 /src/client/vendor
