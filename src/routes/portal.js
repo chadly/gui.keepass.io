@@ -1,4 +1,4 @@
-﻿exports.init = function (app) {
+exports.init = function (app) {
 	//this controller handles all UI requests and serves up our single page app
 
 	app.get("/", handleRequest);

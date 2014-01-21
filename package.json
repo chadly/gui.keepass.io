@@ -18,7 +18,8 @@
     "keepass.io": "~0.2.8",
     "nimble": "0.0.2",
     "vash": "~0.7.6-3",
-    "q": "~1.0.0"
+    "q": "~1.0.0",
+    "googleapis": "~0.4.7"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

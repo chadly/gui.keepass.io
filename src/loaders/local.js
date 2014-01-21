@@ -1,4 +1,4 @@
-﻿var decryptor = require("./../lib/decryptor"),
+var decryptor = require("./../lib/decryptor"),
 	path = require("path"),
 	glob = require("glob"),
 	Q = require("q"),

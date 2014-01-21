@@ -14,6 +14,7 @@ app.configure(function () {
 	app.set("port", process.env.PORT || config.port || 1337);
 	app.set("databasePath", config.databasePath || path.join(__dirname + "/../databases"));
 	app.set("debug", !!config.debug);
+	app.set("google", config.google || {});
 
 	app.locals({
 		title: "Keepass Web GUI",
@@ -32,7 +33,7 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser());
-	app.use(express.session({ secret: "keyboard cat" }));
+	app.use(express.cookieSession({ secret: "keyboard cat" }));
 
 	app.use("/assets", express.static(assetsDir));
 
