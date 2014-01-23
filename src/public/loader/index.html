@@ -1,8 +1,8 @@
-﻿<header>
+<header>
 	<h2>Choose your database</h2>
 </header>
 <article>
-	<a ng-repeat="db in databases" ng-href="/{{db.name}}">
+	<a ng-repeat="db in databases" ng-href="/{{type}}/{{db.name}}">
 		<section class="db">
 			<h3>{{db.name}}</h3>
 			<p>

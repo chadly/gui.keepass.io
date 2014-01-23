@@ -1,7 +1,7 @@
-﻿//https://github.com/chaijs/chai/issues/41
+//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
-describe("Home Controller", function () {
+describe("Loader Controller", function () {
 	var expect = chai.expect;
 
 	describe("when creating new instance of controller", function () {
@@ -10,7 +10,7 @@ describe("Home Controller", function () {
 		beforeEach(angular.mock.module("keepass.io"));
 
 		beforeEach(angular.mock.inject(function ($httpBackend, $controller, $rootScope) {
-			$httpBackend.when("GET", "/api").respond({
+			$httpBackend.when("GET", "/api/local").respond({
 				databases: [{
 					name: "test1.kdbx",
 					size: 100,
@@ -23,7 +23,12 @@ describe("Home Controller", function () {
 			});
 
 			scope = $rootScope.$new();
-			ctrl = $controller("HomeCtrl", { $scope: scope });
+			ctrl = $controller("LoaderCtrl", {
+				$scope: scope,
+				$routeParams: {
+					type: "local"
+				}
+			});
 			$httpBackend.flush();
 		}));
 
@@ -31,6 +36,10 @@ describe("Home Controller", function () {
 			expect(ctrl).not.to.be.undefined;
 		});
 
+		it("should set loader type on scope", function () {
+			expect(scope.type).to.equal("local");
+		});
+		
 		it("should set list of databases from server on scope", function () {
 			expect(scope.databases).not.to.be.undefined;
 			expect(scope.databases.length).to.equal(2);

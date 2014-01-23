@@ -1,8 +1,8 @@
-﻿angular.module("keepass.io").controller("DatabaseViewerCtrl", function ($scope, $rootScope, $routeParams, $location, database) {
+angular.module("keepass.io").controller("DatabaseViewerCtrl", function ($scope, $rootScope, $routeParams, $location, database) {
 	$rootScope.cssScope = "kp-viewer";
 	$rootScope.redirectId = $routeParams.id;
 
-	database.unlock($routeParams.name).then(function onSuccess(data) {
+	database.unlock($routeParams.type, $routeParams.name).then(function onSuccess(data) {
 		$rootScope.title = data.name;
 		$rootScope.description = data.description;
 
@@ -36,7 +36,7 @@
 			}
 		}
 	}, function onError() {
-		$location.path("/" + $routeParams.name);
+		$location.path($routeParams.type + "/" + $routeParams.name);
 	});
 
 	$scope.$watch("selectedItem", function () {

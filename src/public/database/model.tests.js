@@ -1,4 +1,4 @@
-﻿//https://github.com/chaijs/chai/issues/41
+//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
 describe("Database Service", function () {
@@ -22,7 +22,7 @@ describe("Database Service", function () {
 
 		beforeEach(angular.mock.inject(function ($httpBackend) {
 			http = $httpBackend;
-			promise = service.unlock("test-name", "my voice is my passport");
+			promise = service.unlock("local", "test-name", "my voice is my passport");
 		}));
 
 		it("should return a valid promise object", function () {
@@ -37,7 +37,7 @@ describe("Database Service", function () {
 					isPromiseFailed = true;
 				});
 
-				http.expectPOST("/api/test-name", {
+				http.expectPOST("/api/local/test-name", {
 					password: "my voice is my passport"
 				}).respond(401);
 
@@ -53,7 +53,7 @@ describe("Database Service", function () {
 			});
 
 			it("should not return same promise for database name", function () {
-				var newPromise = service.unlock("test-name");
+				var newPromise = service.unlock("local", "test-name");
 				expect(newPromise).not.to.equal(promise);
 			});
 		});
@@ -85,7 +85,7 @@ describe("Database Service", function () {
 			});
 
 			it("should return same promise for database name", function () {
-				var newPromise = service.unlock("test-name");
+				var newPromise = service.unlock("local", "test-name");
 				expect(newPromise).to.equal(promise);
 			});
 		});
@@ -98,11 +98,11 @@ describe("Database Service", function () {
 			http = $httpBackend;
 
 			setupSuccessfulServerReponse(http);
-			service.unlock("test-name", "my voice is my passport");
+			service.unlock("local", "test-name", "my voice is my passport");
 			http.flush();
 
 			//unlock again, expect no server request
-			service.unlock("test-name").then(function (data) {
+			service.unlock("local", "test-name").then(function (data) {
 				loadedData = data;
 			});
 		}));
@@ -116,6 +116,25 @@ describe("Database Service", function () {
 			expect(loadedData.name).to.equal("Test Database");
 		});
 	});
+	
+	describe("when unlocking a database with similar name but different type than an existing database", function () {
+		var http;
+
+		beforeEach(angular.mock.inject(function ($httpBackend) {
+			http = $httpBackend;
+
+			setupSuccessfulServerReponse(http);
+			service.unlock("local", "test-name", "my voice is my passport");
+			http.flush();
+
+			service.unlock("gdrive", "test-name", "my voice is my passport");
+			setupSuccessfulServerReponse(http, "gdrive");
+		}));
+
+		it("should make another server request", function () {
+			http.verifyNoOutstandingExpectation();
+		});
+	});
 
 	describe("when unlocking a locked database without a password", function () {
 		var http, errorStatus;
@@ -124,7 +143,7 @@ describe("Database Service", function () {
 			http = $httpBackend;
 
 			scope.$apply(function () {
-				service.unlock("test-name").catch(function (status) {
+				service.unlock("local", "test-name").catch(function (status) {
 					errorStatus = status;
 				});
 			});
@@ -146,22 +165,22 @@ describe("Database Service", function () {
 			http = $httpBackend;
 
 			setupSuccessfulServerReponse(http);
-			service.unlock("test-name", "my voice is my passport");
+			service.unlock("local", "test-name", "my voice is my passport");
 			http.flush();
 
-			service.lock("test-name");
+			service.lock("local", "test-name");
 		}));
 
 		it("should make another ajax request when unlocking database again", function () {
 			setupSuccessfulServerReponse(http);
-			service.unlock("test-name", "my voice is my passport");
+			service.unlock("local", "test-name", "my voice is my passport");
 			http.flush();
 			http.verifyNoOutstandingExpectation();
 		});
 	});
 
-	function setupSuccessfulServerReponse(http) {
-		http.expectPOST("/api/test-name", {
+	function setupSuccessfulServerReponse(http, type) {
+		http.expectPOST("/api/" + (type || "local") + "/test-name", {
 			password: "my voice is my passport"
 		}).respond(200, JSON.stringify({
 			name: "Test Database",

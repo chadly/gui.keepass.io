@@ -1,18 +1,21 @@
-﻿angular.module("keepass.io", ["ngRoute"]).config(function ($routeProvider, $locationProvider) {
+angular.module("keepass.io", ["ngRoute"]).config(function ($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 
 	$routeProvider
 		.when("/", {
-			controller: "HomeCtrl",
-			templateUrl: "/assets/home/index.html",
+			redirectTo: "/local"
+		})
+		.when("/:type", {
+			controller: "LoaderCtrl",
+			templateUrl: "/assets/loader/index.html",
 			title: "Choose your database"
 		})
-		.when("/:name", {
+		.when("/:type/:name", {
 			controller: "DatabaseUnlockCtrl",
 			templateUrl: "/assets/database/unlock/index.html",
 			title: "Database Unlocker"
 		})
-		.when("/:name/:id", {
+		.when("/:type/:name/:id", {
 			controller: "DatabaseViewerCtrl",
 			templateUrl: "/assets/database/viewer/index.html",
 			title: "Database Viewer"

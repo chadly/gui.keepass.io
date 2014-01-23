@@ -21,7 +21,8 @@ describe("Database Unlock Controller", function () {
 			$scope: scope,
 			database: databaseMock,
 			$routeParams: {
-				name: "test-name"
+				name: "test-name",
+				type: "local"
 			}
 		});
 	}));
@@ -81,7 +82,7 @@ describe("Database Unlock Controller", function () {
 			});
 
 			it("should set location path to the root group ID", function () {
-				expect(location.path()).to.equal("/test-name/1234");
+				expect(location.path()).to.equal("/local/test-name/1234");
 			});
 		});
 
@@ -105,7 +106,7 @@ describe("Database Unlock Controller", function () {
 			});
 
 			it("should set location path to the specified group ID", function () {
-				expect(location.path()).to.equal("/test-name/5678");
+				expect(location.path()).to.equal("/local/test-name/5678");
 			});
 		});
 	});

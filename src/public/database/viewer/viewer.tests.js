@@ -1,4 +1,4 @@
-﻿//https://github.com/chaijs/chai/issues/41
+//https://github.com/chaijs/chai/issues/41
 /* jshint expr:true */
 
 describe("Database Viewer Controller", function () {
@@ -10,6 +10,7 @@ describe("Database Viewer Controller", function () {
 		scope = $rootScope.$new();
 
 		routeParams = {
+			type: "local",
 			name: "test-name",
 			id: "g1"
 		};
@@ -211,7 +212,7 @@ describe("Database Viewer Controller", function () {
 		}));
 
 		it("should redirect to unlock controller", function () {
-			expect(location.path()).to.equal("/test-name");
+			expect(location.path()).to.equal("/local/test-name");
 		});
 	});
 });

@@ -1,40 +1,41 @@
-var database = require("./../lib/decryptor"),
-	path = require("path"),
-	glob = require("glob"),
-	fs = require("fs"),
-	flow = require("nimble");
-
 exports.init = function (app) {
-	var dbPath = app.get("databasePath");
+	var loaders = require("./../loaders").init(app);
 
-	app.get("/api", function (req, res, next) {
-		glob(path.join(dbPath, "/*.kdbx"), function (err, files) {
-			if (err) return next(err);
+	app.get("/api", function (req, res) {
+		var items = [];
 
-			flow.map(files, function (file, done) {
-				var name = path.relative(dbPath, file);
-
-				fs.stat(file, function (err, stats) {
-					if (err) return next(err);
-
-					done(null, {
-						name: name,
-						size: stats.size,
-						modifiedOn: stats.mtime
-					});
-				});
-			}, function (err, result) {
-				if (err) return next(err);
-
-				res.send({
-					databases: result
-				});
+		for (var type in loaders) {
+			items.push({
+				name: loaders[type].name,
+				type: type
 			});
+		}
+
+		res.send(items);
+	});
+
+	app.get("/api/:type", function (req, res, next) {
+		var loader = loaders[req.params.type];
+		if (!loader) {
+			return res.status(404).send("Could not find loader of type: " + req.params.type);
+		}
+
+		loader.list().then(function (result) {
+			res.send({
+				databases: result
+			});
+		}).catch(function (err) {
+			next(err);
 		});
 	});
 
-	app.post("/api/:name", function (req, res, next) {
-		database.decrypt(path.join(dbPath, req.params.name), req.body.password).then(function (data) {
+	app.post("/api/:type/:name", function (req, res, next) {
+		var loader = loaders[req.params.type];
+		if (!loader) {
+			return res.status(404).send("Could not find loader of type: " + req.params.type);
+		}
+
+		loader.load(req.params.name, req.body.password).then(function (data) {
 			res.send(data);
 		}).catch(function (err) {
 			if (err.name === "CredentialsError") {
