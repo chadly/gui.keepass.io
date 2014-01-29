@@ -24,7 +24,7 @@ exports.init = function (app) {
 			res.send({
 				databases: result
 			});
-		}).catch(function (err) {
+		}, function (err) {
 			next(err);
 		});
 	});
@@ -35,11 +35,13 @@ exports.init = function (app) {
 			return res.status(404).send("Could not find loader of type: " + req.params.type);
 		}
 
-		loader.load(req.params.name, req.body.password).then(function (data) {
+		loader.load(req.params.name, req.body.password, req.session).then(function (data) {
 			res.send(data);
-		}).catch(function (err) {
+		}, function (err) {
 			if (err.name === "CredentialsError") {
 				res.status(401).send(err.message);
+			} else if (err.name === "NotFound") {
+				res.status(404).send(err.message);
 			} else {
 				next(err);
 			}

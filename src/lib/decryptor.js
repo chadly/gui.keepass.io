@@ -1,7 +1,7 @@
 var Keepass = require("keepass.io"),
 	Q = require("q");
 
-exports.decrypt = function (path, password) {
+exports.decrypt = function (stream, password) {
 	var db = new Keepass();
 
 	db.setCredentials({
@@ -10,13 +10,20 @@ exports.decrypt = function (path, password) {
 
 	var deferred = Q.defer();
 
-	db.load(path, function (err, data) {
+	//TODO: pull request keepass.io with ability to load from stream
+	//meanwhile using some private methods on the class
+	db._setLoading(true);
+
+	db._setCallback(function (err, data) {
 		if (err) {
 			deferred.reject(err);
 		} else {
 			deferred.resolve(transform(data));
 		}
 	});
+
+	db._setFileBuffer(stream);
+	db._readSignature();
 
 	return deferred.promise;
 };

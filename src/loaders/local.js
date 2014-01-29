@@ -3,7 +3,8 @@
 	glob = require("glob"),
 	Q = require("q"),
 	flow = require("nimble"),
-	fs = require("fs");
+	fs = require("fs"),
+	readFile = Q.denodeify(fs.readFile);
 
 exports.init = function (config) {
 	var basePath = config.get("databasePath");
@@ -39,8 +40,24 @@ exports.init = function (config) {
 		load: function (name, password) {
 			var dbPath = path.join(basePath, name);
 
-			//TODO: only pass stream to decryptor
-			return decryptor.decrypt(dbPath, password);
+			var deferred = Q.defer();
+
+			fs.exists(dbPath, function (exists) {
+				if (!exists) {
+					deferred.reject({
+						name: "NotFound",
+						message: "Could not find database file on disk"
+					});
+				}
+
+				readFile(dbPath).then(function (stream) {
+					return decryptor.decrypt(stream, password);
+				}, function (err) {
+					deferred.reject(err);
+				}).then(deferred.resolve, deferred.reject);
+			});
+
+			return deferred.promise;
 		}
 	};
 };
