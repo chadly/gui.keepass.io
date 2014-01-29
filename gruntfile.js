@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 					dest: "src/public/vendor/"
 				}, {
 					expand: true,
-					cwd: "bower_components/bootswatch/slate/",
+					cwd: "bower_components/bootswatch/united/",
 					src: ["*.less"],
 					dest: "src/public/vendor/bootswatch/"
 				}, {
