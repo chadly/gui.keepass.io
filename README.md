@@ -1,4 +1,4 @@
-#Keepass.io GUI [![wercker status](https://app.wercker.com/status/5c7b6c1724af8c1405dbedfe2b0d15ff "wercker status")](https://app.wercker.com/project/bykey/5c7b6c1724af8c1405dbedfe2b0d15ff)
+#Keepass.io GUI
 
 > A simple and elegant readonly web view of your Keepass database.
 
@@ -46,7 +46,3 @@ npm test
 ```
 
 This will run the tests in a headless browser via [grunt-mocha](https://github.com/kmiyashiro/grunt-mocha). If you want to run them in a real browser, just open `src/public/test.html` in your favorite browser and you can run/debug the tests.
-
--------------------------------------------------------
-
-Found this project useful? Help support development: `17wS7cQARUrb67Gm7BweApNGKToNbxkMrg`
