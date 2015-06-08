@@ -65,7 +65,7 @@ module.exports = function (grunt) {
 					dest: "src/public/vendor/bootswatch/"
 				}, {
 					expand: true,
-					cwd: "bower_components/jquery/",
+					cwd: "bower_components/jquery/dist/",
 					src: ["jquery.js"],
 					dest: "src/public/vendor/"
 				}, {
